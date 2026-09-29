@@ -1,0 +1,77 @@
+schema_version: "1.0"
+
+extension:
+  id: "technical-solution"
+  name: "Technical Solution Workspace"
+  version: "3.0.0"
+  description: "Central multi-repository Spec Kit workspace: initiative orchestration, cross-domain review, shared templates and the source-repository resolver."
+  author: "Spec Kit Workspace"
+  license: "MIT"
+
+requires:
+  speckit_version: ">=1.0.0"
+  commands:
+    - "speckit.specify"
+    - "speckit.plan"
+    - "speckit.tasks"
+
+provides:
+  commands:
+    - name: "speckit.technical-solution.setup"
+      file: "commands/setup.md"
+      description: "Create the central workspace files (manifest, initiative registry, profiles) without overwriting anything."
+    - name: "speckit.technical-solution.run"
+      file: "commands/run.md"
+      description: "Start or resume an initiative lifecycle across common, Salesforce, MuleSoft and other installed domains."
+    - name: "speckit.technical-solution.review"
+      file: "commands/review.md"
+      description: "Review requirements, implementation evidence and cross-domain consistency of an initiative."
+
+  templates:
+    - name: "common-initiative-template"
+      file: "templates/common-initiative-template.md"
+      description: "Shared initiative requirements (common/initiative.md)."
+    - name: "domain-spec-template"
+      file: "templates/domain-spec-template.md"
+      description: "Domain specification (initiatives/<id>/<domain>/spec.md)."
+    - name: "integration-matrix-template"
+      file: "templates/integration-matrix-template.md"
+      description: "Cross-domain integration IDs and ownership (common/integration-matrix.md)."
+    - name: "decision-log-template"
+      file: "templates/decision-log-template.md"
+      description: "Decision log (common/decisions.md)."
+    - name: "clarification-report-template"
+      file: "templates/clarification-report-template.md"
+      description: "Clarification questions and missing evidence."
+    - name: "initiative-readme-template"
+      file: "templates/initiative-readme-template.md"
+      description: "Initiative README."
+    - name: "implementation-log-template"
+      file: "templates/implementation-log-template.md"
+      description: "Implementation log per domain."
+    - name: "verification-template"
+      file: "templates/verification-template.md"
+      description: "Verification evidence record."
+    - name: "release-template"
+      file: "templates/release-template.md"
+      description: "Release record with explicit gates."
+
+  scripts:
+    - name: "source-workspaces-cli"
+      file: "scripts/source_workspaces/cli.py"
+      description: "List and resolve registered application repositories (single Git root or catalog of nested repositories)."
+      runtimes: ["python"]
+    - name: "source-workspaces-registry"
+      file: "scripts/source_workspaces/registry.py"
+      description: "Loads spec-kit-workspace.json profiles and the machine-local root registry."
+      runtimes: ["python"]
+    - name: "source-workspaces-adapters"
+      file: "scripts/source_workspaces/adapters.py"
+      description: "Resolver adapters: git-root and path-remote-manifest."
+      runtimes: ["python"]
+
+tags:
+  - "workspace"
+  - "orchestration"
+  - "multi-repo"
+  - "solution-design"

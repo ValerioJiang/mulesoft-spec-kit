@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-29T00:00:00Z",
+  "catalog_url": "",
+  "extensions": {
+    "technical-solution": {
+      "name": "Technical Solution Workspace",
+      "id": "technical-solution",
+      "version": "3.0.0",
+      "description": "Central multi-repository Spec Kit workspace: initiative orchestration, cross-domain review, shared templates and the source-repository resolver.",
+      "author": "Spec Kit Workspace",
+      "license": "MIT",
+      "category": "process",
+      "effect": "read-write",
+      "requires": { "speckit_version": ">=1.0.0" },
+      "provides": { "commands": 3, "hooks": 0 },
+      "tags": ["workspace", "orchestration", "multi-repo", "solution-design"]
+    },
+    "mulesoft": {
+      "name": "MuleSoft Technical Solution",
+      "id": "mulesoft",
+      "version": "2.0.0",
+      "description": "MuleSoft lifecycle stages for a central Spec Kit workspace, for any Mule 4 / Anypoint repository.",
+      "author": "Spec Kit Workspace",
+      "license": "MIT",
+      "category": "process",
+      "effect": "read-write",
+      "requires": { "speckit_version": ">=1.0.0" },
+      "provides": { "commands": 14, "hooks": 0 },
+      "tags": ["mulesoft", "api", "solution-design"]
+    },
+    "salesforce": {
+      "name": "Salesforce Technical Solution",
+      "id": "salesforce",
+      "version": "2.0.0",
+      "description": "Salesforce design stages for a central Spec Kit workspace, for any Salesforce DX repository.",
+      "author": "Spec Kit Workspace",
+      "license": "MIT",
+      "category": "process",
+      "effect": "read-only",
+      "requires": { "speckit_version": ">=1.0.0" },
+      "provides": { "commands": 4, "hooks": 0 },
+      "tags": ["salesforce", "crm", "solution-design"]
+    },
+    "sf-workspace": {
+      "name": "SFSpeckit central-workspace adapter",
+      "id": "sf-workspace",
+      "version": "2.0.0",
+      "description": "Runs the 19 SFSpeckit (spec-kit-sf 2.0.0) Salesforce lifecycle prompts against a central Spec Kit workspace.",
+      "author": "Spec Kit Workspace (prompts by Sumanth Yanamala, MIT)",
+      "repository": "https://github.com/ysumanth06/spec-kit-sf",
+      "license": "MIT",
+      "category": "process",
+      "effect": "read-write",
+      "requires": { "speckit_version": ">=1.0.0" },
+      "provides": { "commands": 19, "hooks": 0 },
+      "tags": ["salesforce", "sdlc", "apex", "workspace"]
+    }
+  }
+}

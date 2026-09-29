@@ -1,0 +1,36 @@
+schema_version: "1.0"
+
+bundle:
+  id: "central-workspace"
+  name: "Central Technical Solution Workspace"
+  version: "1.0.0"
+  role: "developer"
+  description: "Everything needed to run a central multi-repository Spec Kit workspace for Salesforce and MuleSoft initiatives: the workspace extension, the domain extensions, the central-workspace preset and the technical-solution workflow."
+  author: "Spec Kit Workspace"
+  license: "MIT"
+
+requires:
+  speckit_version: ">=1.0.0"
+  tools: []
+  mcp: []
+
+provides:
+  extensions:
+    - id: "technical-solution"
+      version: "3.0.0"
+    - id: "mulesoft"
+      version: "2.0.0"
+    - id: "salesforce"
+      version: "2.0.0"
+    - id: "sf-workspace"
+      version: "2.0.0"
+  presets:
+    - id: "central-workspace"
+      version: "1.0.0"
+      priority: 10
+      strategy: "replace"
+  workflows:
+    - id: "technical-solution"
+      version: "2.0.0"
+
+tags: ["workspace", "multi-repo", "salesforce", "mulesoft", "solution-design"]

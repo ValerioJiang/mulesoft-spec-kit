@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "workspace_id": "speckit-workspace",
+  "role": "central-speckit-artifact-workspace",
+  "workflow_entrypoint": "speckit.technical-solution.run",
+  "workflow_contract": ".specify/workflows/technical-solution/workflow.yml",
+  "initiative_registry": "initiatives/README.md",
+  "artifact_layout": {
+    "root": "initiatives/{initiative_id}",
+    "common": "initiatives/{initiative_id}/common",
+    "salesforce": "initiatives/{initiative_id}/salesforce",
+    "mulesoft": "initiatives/{initiative_id}/mulesoft",
+    "additional_domain": "initiatives/{initiative_id}/{domain}"
+  },
+  "domain_registry": ".specify/extensions.yml",
+  "source_workspace_config": "spec-kit-workspace.local.json",
+  "source_workspace_profiles": [
+    {
+      "id": "salesforce-app",
+      "domain": "salesforce",
+      "resolver": "git-root"
+    },
+    {
+      "id": "mulesoft-catalog",
+      "domain": "mulesoft",
+      "resolver": "path-remote-manifest",
+      "manifest": "repos.conf"
+    }
+  ],
+  "source_resolution": {
+    "entrypoint": ".specify/extensions/technical-solution/scripts/source_workspaces/cli.py",
+    "profile_collection": "source_workspace_profiles",
+    "local_collection": "workspace_roots",
+    "profile_fields": ["id", "domain", "resolver"],
+    "optional_profile_fields": ["manifest", "expected_remote"],
+    "local_root_fields": ["id", "root"],
+    "optional_local_root_fields": [],
+    "path_base": "workspace_root_for_relative_paths",
+    "absolute_roots_allowed": true,
+    "selection": {
+      "single_repository": "<workspace-id>",
+      "catalog_repository": "<workspace-id>:<relative-repository-path>",
+      "matching": "exact"
+    },
+    "resolvers": {
+      "git-root": {
+        "kind": "single-repository-at-workspace-root"
+      },
+      "path-remote-manifest": {
+        "kind": "catalog-of-nested-git-repositories",
+        "required_profile_fields": ["manifest"],
+        "manifest_columns": ["relative_repository_path", "remote_url"],
+        "manifest_format": "whitespace-separated-path-and-remote",
+        "ignore_empty_lines": true,
+        "comment_prefix": "#",
+        "relative_path_base": "workspace_root",
+        "reject_path_traversal": true
+      }
+    },
+    "filesystem_search": false,
+    "design_stages_require_repository": false
+  },
+  "path_policy": {
+    "versioned_paths_are_relative": true,
+    "machine_local_source_workspace_roots_are_versioned": false,
+    "application_artifact_output": "not-in-application-repositories"
+  }
+}

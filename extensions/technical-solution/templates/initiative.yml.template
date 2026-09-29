@@ -1,0 +1,15 @@
+schema_version: 1
+initiative:
+  id: "<initiative-id>"
+  title: "<title>"
+  domains: [common]
+  source_design:
+    reference: "<repository path, URI, or document ID>"
+    revision: "<revision/date if known>"
+  repositories:
+    # Record stable repository identity and observed commit only; no local paths or credentials.
+    common: { name: "", url: "", commit: "" }
+    salesforce: { name: "", url: "", commit: "" }
+    mulesoft: { name: "", url: "", commit: "" }
+  selected_profiles: []
+  state: Draft

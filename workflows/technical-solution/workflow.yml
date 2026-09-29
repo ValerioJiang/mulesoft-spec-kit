@@ -1,0 +1,44 @@
+schema_version: "1.0"
+workflow:
+  id: "technical-solution"
+  name: "Cross-platform Technical Solution"
+  version: "2.0.0"
+  author: "Spec Kit Workspace"
+  description: "Runs or resumes the complete cross-platform Spec Kit lifecycle in the central workspace."
+
+requires:
+  speckit_version: ">=1.0.0"
+  integrations:
+    any:
+      - "claude"
+
+inputs:
+  request:
+    type: string
+    required: true
+    prompt: "Initiative request or Solution Design reference"
+  stage:
+    type: string
+    required: false
+    prompt: "Lifecycle stage (default: full design-to-verification cycle)"
+  initiative_id:
+    type: string
+    required: false
+    prompt: "Existing central initiative ID, if resuming"
+  domains:
+    type: string
+    required: false
+    prompt: "Confirmed domains: common, Salesforce, MuleSoft, or another installed adapter"
+
+steps:
+  - id: lifecycle
+    command: speckit.technical-solution.run
+    integration: "claude"
+    input:
+      args: "{{ inputs.stage }} {{ inputs.initiative_id }} {{ inputs.domains }} {{ inputs.request }}"
+
+  - id: lifecycle-review
+    type: gate
+    message: "Review the initiative artifacts and evidence. This gate does not authorize unstated external actions or mark business/architecture approval."
+    options: [approve, reject]
+    on_reject: abort

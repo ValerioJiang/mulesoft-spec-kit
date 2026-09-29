@@ -1,0 +1,15 @@
+# Local agent settings and machine-specific MCP configuration
+.claude/settings*.json
+.mcp*.json
+
+# Python
+__pycache__/
+*.pyc
+
+# Scratch workspaces created while testing the toolkit
+/.scratch/
+
+# Editor and operating-system files
+.DS_Store
+.idea/
+.vscode/

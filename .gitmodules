@@ -1,0 +1,6 @@
+[submodule "upstream/spec-kit"]
+	path = upstream/spec-kit
+	url = https://github.com/github/spec-kit.git
+[submodule "upstream/spec-kit-sf"]
+	path = upstream/spec-kit-sf
+	url = https://github.com/ysumanth06/spec-kit-sf.git

@@ -1,0 +1,40 @@
+schema_version: "1.0"
+
+extension:
+  id: "salesforce"
+  name: "Salesforce Technical Solution"
+  version: "2.0.0"
+  description: "Salesforce design stages for a central Spec Kit workspace: specification, clarification, technical planning with a read-only DX MCP gate, and review, for any Salesforce DX repository."
+  author: "Spec Kit Workspace"
+  license: "MIT"
+
+requires:
+  speckit_version: ">=1.0.0"
+
+provides:
+  commands:
+    - name: "speckit.salesforce.specify"
+      file: "commands/specify.md"
+      description: "Create CRM requirements from the common initiative intent."
+    - name: "speckit.salesforce.clarify"
+      file: "commands/clarify.md"
+      description: "Record Salesforce requirement gaps and evidence prerequisites."
+    - name: "speckit.salesforce.plan"
+      file: "commands/plan.md"
+      description: "Draft a CRM technical plan with the Salesforce DX MCP read-only gate."
+    - name: "speckit.salesforce.review"
+      file: "commands/review.md"
+      description: "Review the Salesforce plan against common integration contracts."
+
+  templates:
+    - name: "salesforce-plan-template"
+      file: "templates/salesforce-plan-template.md"
+      description: "Salesforce technical plan."
+    - name: "salesforce-data-model-template"
+      file: "templates/salesforce-data-model-template.md"
+      description: "Salesforce data model and security constraints."
+
+tags:
+  - "salesforce"
+  - "crm"
+  - "solution-design"

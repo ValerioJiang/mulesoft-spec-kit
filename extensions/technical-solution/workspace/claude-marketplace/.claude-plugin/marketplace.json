@@ -1,0 +1,14 @@
+{
+  "name": "speckit-workspace",
+  "description": "Claude Code plugin exposing the central Spec Kit workspace lifecycle to a parent repository.",
+  "owner": {
+    "name": "Spec Kit Workspace"
+  },
+  "plugins": [
+    {
+      "name": "speckit-workspace",
+      "source": "./plugins/speckit-workspace",
+      "description": "Orchestrates the end-to-end Spec Kit lifecycle from a repository that mounts the workspace as a submodule."
+    }
+  ]
+}
