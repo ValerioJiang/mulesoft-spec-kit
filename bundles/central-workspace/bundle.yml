@@ -23,7 +23,7 @@ provides:
     - id: "salesforce"
       version: "2.0.0"
     - id: "sf-workspace"
-      version: "2.0.0"
+      version: "2.1.0"
   presets:
     - id: "central-workspace"
       version: "1.0.0"
@@ -31,6 +31,6 @@ provides:
       strategy: "replace"
   workflows:
     - id: "technical-solution"
-      version: "2.0.0"
+      version: "2.1.0"
 
 tags: ["workspace", "multi-repo", "salesforce", "mulesoft", "solution-design"]

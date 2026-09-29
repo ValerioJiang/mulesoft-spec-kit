@@ -37,7 +37,7 @@ External actions are not started by automatic hooks. Do not send communications,
 | `OPEN_DECISION` | Choice with owner and impact |
 | `NOT_EXECUTED` | Evidence or action not executed and the reason |
 
-Do not promote a state on the mere presence of an artifact. Every transition depends on the evidence required for that stage.
+Do not promote a state on the mere presence of an artifact. Every transition depends on the evidence required for that stage. The `state` field of `initiative.yml` is owned by the orchestrator (`speckit.technical-solution.run`): it sets `Clarifying` after clarify, `Planned` after plan, `Ready` after tasks and analyze, `Implementing` when implementation starts, `Implemented` when the selected tasks are done, `Verified` after verify and `Released` after release, and `Blocked` with prerequisite, owner and required evidence whenever a stage cannot complete. Stage commands invoked directly report the evidence they produced and leave the state change to the orchestrator or to the user.
 
 ## Re-execution and paths
 

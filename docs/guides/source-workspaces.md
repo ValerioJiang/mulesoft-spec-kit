@@ -29,6 +29,7 @@ The `salesforce-app` profile uses `git-root` and points to a single repository; 
 All skills use the CLI indicated by `source_resolution.entrypoint` in the root manifest. Skills do not interpret the local configuration or the repository manifests directly.
 
 ```sh
+# python3 on Linux and macOS, python on Windows
 python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py list --domain mulesoft
 python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py resolve 'mulesoft-catalog:experience/orders-xapi'
 python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py resolve salesforce-app

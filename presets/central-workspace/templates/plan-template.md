@@ -1,14 +1,14 @@
-# Implementation Plan: [FEATURE]
+# Implementation Plan: [INITIATIVE TITLE]
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
+**Initiative**: `[initiative-id]` | **Domain**: `[domain]` | **Date**: [DATE] | **Spec**: [link]
 
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
+**Input**: `initiatives/<initiative-id>/<domain>/spec.md`, `../common/initiative.md`, `../common/integration-matrix.md`, `../common/decisions.md`
 
 **Note**: This template is filled in by the `/speckit-plan` command; its definition describes the execution workflow.
 
 ## Summary
 
-[Extract from feature spec: primary requirement + technical approach from research]
+[Extract from the domain spec and the common initiative: primary requirement + technical approach from the research below]
 
 ## Technical Context
 
@@ -36,32 +36,42 @@
 
 **Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
 
+## Research
+
+[Findings that resolve every NEEDS CLARIFICATION above: decision, rationale, alternatives considered, and the source (repository revision, live evidence, document) for each. Record them here; there is no separate research file.]
+
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+*GATE: Must pass before research. Re-check after design.*
 
 [Gates determined based on constitution file]
 
 ## Project Structure
 
-### Documentation (this feature)
+### Documentation (this initiative and domain)
 
 ```text
-specs/[###-feature]/
-├── plan.md              # This file (/speckit-plan command output)
-├── research.md          # Phase 0 output (/speckit-plan command)
-├── data-model.md        # Phase 1 output (/speckit-plan command)
-├── quickstart.md        # Phase 1 output (/speckit-plan command)
-├── contracts/           # Phase 1 output (/speckit-plan command)
-└── tasks.md             # Phase 2 output (/speckit-tasks command - NOT created by /speckit-plan)
+initiatives/<initiative-id>/<domain>/
+├── plan.md                # This file (/speckit-plan command output)
+├── data-model.md          # Design output for Salesforce (/speckit-plan command)
+├── contracts/             # Design output for MuleSoft: API contract drafts (/speckit-plan command)
+├── tasks.md               # /speckit-tasks command output - NOT created by /speckit-plan
+├── implementation-log.md  # /speckit-implement command output
+├── verification/          # /speckit-verify and QA evidence
+├── review.md              # Review record
+└── release.md             # Release record
 ```
 
-### Source Code (repository root)
+Shared artifacts stay in `initiatives/<initiative-id>/common/` (`initiative.md`, `integration-matrix.md`, `decisions.md`). Nothing is written into an application repository's `.specify/`.
+
+### Source Code (selected application repository)
 <!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
+  ACTION REQUIRED: The application code layout is discovered in the repository
+  resolved for this initiative (package directories, modules, tests), never
+  assumed. Replace the placeholder tree below with the concrete layout observed
+  there. Delete unused options and expand the chosen structure with real paths
+  (e.g., apps/admin, packages/something). The delivered plan must not include
+  Option labels.
 -->
 
 ```text
@@ -101,7 +111,7 @@ ios/ or android/
 ```
 
 **Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+directories captured above, with the repository identity and commit they were observed at]
 
 ## Complexity Tracking
 

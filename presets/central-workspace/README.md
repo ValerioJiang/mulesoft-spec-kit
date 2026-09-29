@@ -4,13 +4,13 @@ A preset that makes the core Spec Kit commands work in a central, multi-reposito
 
 ## When to Use
 
-Use it in a workspace created for the `technical-solution` extension from this repository. The preset requires that extension: its commands read `spec-kit-workspace.json`, the workflow contract and the templates that the extension installs.
+Use it in a workspace created for the `technical-solution` extension from this repository. The preset requires that extension: its commands read `spec-kit-workspace.json`, the workflow contract and the templates that the extension installs. The preset must be installed in every workspace that uses the `technical-solution`, `mulesoft`, `salesforce` or `sf-workspace` extensions: their commands route to `/speckit-review`, `/speckit-verify` and `/speckit-release` and expect the workspace-aware core commands, and without the preset the core `/speckit-specify`, `/speckit-plan` and `/speckit-tasks` write to `specs/` instead of `initiatives/<id>/<domain>/`.
 
 ## Commands Included
 
 | Command | Output | Description |
 |---------|--------|-------------|
-| `/speckit-specify` | `spec.md` | Create or refine traceable initiative requirements under the selected domain |
+| `/speckit-specify` | `common/initiative.md` or `<domain>/spec.md` | Create or refine traceable initiative requirements under the selected domain |
 | `/speckit-clarify` | `clarification-report.md` | Record focused questions with impact, owner and evidence needed |
 | `/speckit-plan` | `plan.md` | Produce an implementation-ready technical plan for the selected domain |
 | `/speckit-tasks` | `tasks.md` | Build a traceable task or story breakdown from the approved plan |

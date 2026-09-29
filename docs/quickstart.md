@@ -22,14 +22,15 @@ The script is equivalent to:
 
 ```bash
 mkdir my-workspace && cd my-workspace
-specify init --here --force --non-interactive --ignore-agent-tools --integration claude \
+specify init --here --force --non-interactive --ignore-agent-tools --integration claude --script sh \
   --preset    ../spec-kit-workspace/presets/central-workspace \
   --extension ../spec-kit-workspace/extensions/technical-solution \
   --extension ../spec-kit-workspace/extensions/mulesoft \
-  --extension ../spec-kit-workspace/extensions/salesforce \
-  --extension ../spec-kit-workspace/extensions/sf-workspace     # optional, full Salesforce lifecycle
+  --extension ../spec-kit-workspace/extensions/salesforce
 specify workflow add --dev ../spec-kit-workspace/workflows/technical-solution
 ```
+
+plus a `.gitignore` seed and a check that every component is present (`specify init` returns 0 even when a component fails to install). The preset is not optional: without it the core commands write to `specs/` instead of `initiatives/`. Add `--extension ../spec-kit-workspace/extensions/sf-workspace` (script: `--with-sf-workspace`) only if you want the extended Salesforce add-on; its prompts contain deploy and login commands, gated to explicit requests. After a toolkit update, refresh an existing workspace with `create-workspace.sh my-workspace --update`. On Windows use the PowerShell twin `scripts\powershell\create-workspace.ps1` or Git Bash; keep `--script sh` unless your agent runs `python3` from PowerShell.
 
 Use any integration Spec Kit supports in place of `claude`; the commands are generated from the same sources. Put the workspace under version control: it is where every initiative's artifacts will live.
 
@@ -49,7 +50,7 @@ Design stages (`specify`, `clarify`, `plan`, `tasks`) need no repository. Before
 
 1. Add a profile to `source_workspace_profiles` in `spec-kit-workspace.json` (versioned): an ID, the domain and the resolver (`git-root` for a single repository, `path-remote-manifest` for a catalog of nested repositories described by a manifest file).
 2. Copy `spec-kit-workspace.local.json.template` to `spec-kit-workspace.local.json` (ignored by Git) and map each profile ID to a path on your machine.
-3. Check with the resolver:
+3. Check with the resolver (`python3` on Linux and macOS, `python` on Windows):
 
    ```bash
    python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py list
@@ -61,7 +62,7 @@ Details and examples: [source repositories](guides/source-workspaces.md).
 ## 5. Run an initiative
 
 ```text
-/speckit-technical-solution-run specify ORD-042 "Order status sync between CRM and the order system"
+/speckit-technical-solution-run specify ORD-042 Order status sync between CRM and the order system
 /speckit-technical-solution-run clarify ORD-042
 /speckit-technical-solution-run plan ORD-042
 /speckit-technical-solution-run tasks ORD-042 mulesoft
@@ -70,7 +71,7 @@ Details and examples: [source repositories](guides/source-workspaces.md).
 /speckit-technical-solution-review ORD-042
 ```
 
-`full` runs the internal stages in sequence and stops at every gate; external actions (tests, deployments, tickets, PR/MR) run only when you ask for them explicitly with their target. You can also call the stage commands directly (`/speckit-mulesoft-plan ORD-042`, `/speckit-salesforce-clarify ORD-042`, `/speckit-tasks ORD-042 common`) or run the workflow with `specify workflow run technical-solution`.
+The first word is the stage, the second the initiative ID (or a source reference), and any further text is the title or request; the orchestrator derives a filesystem-safe folder name (`ORD-042-order-status-sync`). `full` runs the internal stages in sequence and stops at every gate; external actions (tests, deployments, tickets, PR/MR) run only when you ask for them explicitly with their target. You can also call the stage commands directly (`/speckit-mulesoft-plan ORD-042`, `/speckit-salesforce-clarify ORD-042`, `/speckit-tasks ORD-042 common`) or run the workflow with `specify workflow run technical-solution`.
 
 ## 6. Where things end up
 

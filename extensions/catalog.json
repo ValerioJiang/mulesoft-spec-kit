@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "updated_at": "2026-09-29T00:00:00Z",
-  "catalog_url": "",
+  "catalog_url": "<https-url-of-this-file-when-served>",
   "extensions": {
     "technical-solution": {
       "name": "Technical Solution Workspace",
@@ -12,9 +12,20 @@
       "license": "MIT",
       "category": "process",
       "effect": "read-write",
-      "requires": { "speckit_version": ">=1.0.0" },
-      "provides": { "commands": 3, "hooks": 0 },
-      "tags": ["workspace", "orchestration", "multi-repo", "solution-design"]
+      "requires": {
+        "speckit_version": ">=1.0.0"
+      },
+      "provides": {
+        "commands": 3,
+        "hooks": 0
+      },
+      "tags": [
+        "workspace",
+        "orchestration",
+        "multi-repo",
+        "solution-design"
+      ],
+      "download_url": "<release-archive-url-of-extensions/technical-solution>"
     },
     "mulesoft": {
       "name": "MuleSoft Technical Solution",
@@ -25,9 +36,19 @@
       "license": "MIT",
       "category": "process",
       "effect": "read-write",
-      "requires": { "speckit_version": ">=1.0.0" },
-      "provides": { "commands": 14, "hooks": 0 },
-      "tags": ["mulesoft", "api", "solution-design"]
+      "requires": {
+        "speckit_version": ">=1.0.0"
+      },
+      "provides": {
+        "commands": 14,
+        "hooks": 0
+      },
+      "tags": [
+        "mulesoft",
+        "api",
+        "solution-design"
+      ],
+      "download_url": "<release-archive-url-of-extensions/mulesoft>"
     },
     "salesforce": {
       "name": "Salesforce Technical Solution",
@@ -38,23 +59,56 @@
       "license": "MIT",
       "category": "process",
       "effect": "read-only",
-      "requires": { "speckit_version": ">=1.0.0" },
-      "provides": { "commands": 4, "hooks": 0 },
-      "tags": ["salesforce", "crm", "solution-design"]
+      "requires": {
+        "speckit_version": ">=1.0.0"
+      },
+      "provides": {
+        "commands": 4,
+        "hooks": 0
+      },
+      "tags": [
+        "salesforce",
+        "crm",
+        "solution-design"
+      ],
+      "download_url": "<release-archive-url-of-extensions/salesforce>"
     },
     "sf-workspace": {
-      "name": "SFSpeckit central-workspace adapter",
+      "name": "SFSpeckit central-workspace add-on",
       "id": "sf-workspace",
-      "version": "2.0.0",
-      "description": "Runs the 19 SFSpeckit (spec-kit-sf 2.0.0) Salesforce lifecycle prompts against a central Spec Kit workspace.",
+      "version": "2.1.0",
+      "description": "Extended Salesforce lifecycle stages (stories, implementation, QA, scoring, hotfix, regression, release notes, UAT) from SFSpeckit 2.0.0, adapted to a central Spec Kit workspace. Opt-in; design stages come from the salesforce extension.",
       "author": "Spec Kit Workspace (prompts by Sumanth Yanamala, MIT)",
       "repository": "https://github.com/ysumanth06/spec-kit-sf",
       "license": "MIT",
       "category": "process",
       "effect": "read-write",
-      "requires": { "speckit_version": ">=1.0.0" },
-      "provides": { "commands": 19, "hooks": 0 },
-      "tags": ["salesforce", "sdlc", "apex", "workspace"]
+      "requires": {
+        "speckit_version": ">=1.0.0",
+        "tools": [
+          {
+            "name": "sf",
+            "version": ">=2.0.0",
+            "required": true
+          },
+          {
+            "name": "gh",
+            "version": ">=2.0.0",
+            "required": false
+          }
+        ]
+      },
+      "provides": {
+        "commands": 14,
+        "hooks": 0
+      },
+      "tags": [
+        "salesforce",
+        "sdlc",
+        "apex",
+        "workspace"
+      ],
+      "download_url": "<release-archive-url-of-extensions/sf-workspace>"
     }
   }
 }

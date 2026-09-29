@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-29T00:00:00Z",
+  "catalog_url": "<https-url-of-this-file-when-served>",
+  "presets": {
+    "central-workspace": {
+      "name": "Central Workspace",
+      "id": "central-workspace",
+      "version": "1.0.0",
+      "description": "Core Spec Kit commands and templates adapted to a central multi-repository workspace where artifacts live under initiatives/<id>/<domain>/.",
+      "author": "Spec Kit Workspace",
+      "license": "MIT",
+      "download_url": "<release-archive-url-of-presets/central-workspace>",
+      "requires": {
+        "speckit_version": ">=1.0.0"
+      },
+      "provides": {
+        "commands": 10,
+        "templates": 4
+      },
+      "tags": ["workspace", "multi-repo", "core"]
+    }
+  }
+}

@@ -83,12 +83,15 @@ def sanitized_remote(value: str | None) -> str | None:
 
 
 def run_git(repository_path: Path, *arguments: str, required: bool = True) -> str | None:
-    result = subprocess.run(
-        ["git", "-C", str(repository_path), *arguments],
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(repository_path), *arguments],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except FileNotFoundError as error:
+        raise ResolutionError("git executable not found on PATH; install Git or add it to PATH") from error
     if result.returncode != 0:
         if required:
             detail = result.stderr.strip() or "git command failed"

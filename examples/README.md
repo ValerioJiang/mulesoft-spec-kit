@@ -2,7 +2,7 @@
 
 ## A created workspace
 
-Running `scripts/bash/create-workspace.sh my-workspace --integration claude` and then `/speckit-technical-solution-setup` inside it produces this layout (Claude Code shown; other integrations generate their own command files from the same sources):
+Running `scripts/bash/create-workspace.sh my-workspace --integration claude --script sh` and then `/speckit-technical-solution-setup` inside it produces this layout (Claude Code shown; other integrations generate their own command files from the same sources; the script also seeds a root `.gitignore`):
 
 ```text
 my-workspace/
@@ -28,7 +28,7 @@ my-workspace/
     ├── speckit-converge/ speckit-review/ speckit-verify/ speckit-release/
     ├── speckit-mulesoft-*/  (14)
     ├── speckit-salesforce-*/ (4)
-    └── speckit-sf-workspace-*/ (19, optional)
+    └── speckit-sf-workspace-*/ (14, only with --with-sf-workspace)
 ```
 
 ## An initiative

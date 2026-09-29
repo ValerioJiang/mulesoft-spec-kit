@@ -14,7 +14,7 @@ initiatives/<initiative-id>/
 └── <other-domain>/            # future domain adapters follow the same contract
 ```
 
-Only create domain directories for confirmed scope. Never put generated artifacts in an application repository's `.specify/` directory. `initiative.yml` records repository identity and revision, not a machine-local path or credentials.
+Only create domain directories for confirmed scope. Never put generated artifacts in an application repository's `.specify/` directory. `initiative.yml` records repository identity and revision, not a machine-local path or credentials. `artifact_layout` in `spec-kit-workspace.json` may relocate the root shown above; every command reads it and treats `initiatives/<initiative-id>/` as the default only. Initiative IDs are filesystem-safe: letters, digits, `.`, `_` and `-`; the orchestrator derives them from the business key and title.
 
 ## Stages
 

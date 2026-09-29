@@ -1,4 +1,4 @@
-# SF-MuleSoft Technical Solution Workspace Constitution
+# Central Technical Solution Workspace Constitution
 
 ## Principles
 

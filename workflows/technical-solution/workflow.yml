@@ -2,15 +2,12 @@ schema_version: "1.0"
 workflow:
   id: "technical-solution"
   name: "Cross-platform Technical Solution"
-  version: "2.0.0"
+  version: "2.1.0"
   author: "Spec Kit Workspace"
   description: "Runs or resumes the complete cross-platform Spec Kit lifecycle in the central workspace."
 
 requires:
   speckit_version: ">=1.0.0"
-  integrations:
-    any:
-      - "claude"
 
 inputs:
   request:
@@ -29,11 +26,15 @@ inputs:
     type: string
     required: false
     prompt: "Confirmed domains: common, Salesforce, MuleSoft, or another installed adapter"
+  integration:
+    type: string
+    default: "auto"
+    prompt: "Integration to use (e.g. claude, copilot, gemini; 'auto' uses the project's initialized integration)"
 
 steps:
   - id: lifecycle
     command: speckit.technical-solution.run
-    integration: "claude"
+    integration: "{{ inputs.integration }}"
     input:
       args: "{{ inputs.stage }} {{ inputs.initiative_id }} {{ inputs.domains }} {{ inputs.request }}"
 

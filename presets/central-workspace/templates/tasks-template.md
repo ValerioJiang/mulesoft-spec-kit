@@ -7,7 +7,7 @@ description: "Task list template for feature implementation"
 
 **Input**: Design documents from `initiatives/<initiative-id>/<domain>/`
 
-**Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
+**Prerequisites**: plan.md (required), spec.md (required for user stories), data-model.md or contracts/ if they exist
 
 **Verification**: Include implementation and verification work required by acceptance criteria and the approved plan. Planned checks must not be marked as executed results.
 

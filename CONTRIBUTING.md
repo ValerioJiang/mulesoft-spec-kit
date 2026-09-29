@@ -26,8 +26,10 @@ Thanks for helping. This repository is a set of Spec Kit building blocks, so mos
    ```
 
 3. Read the generated file for the command you changed (for example `.claude/skills/speckit-mulesoft-plan/SKILL.md`). Every path in it must resolve inside the workspace: `.specify/extensions/<id>/...`, `initiatives/<id>/...`, `spec-kit-workspace.json`.
-4. Run the resolver: `python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py list` (after copying `spec-kit-workspace.local.json.template` to `spec-kit-workspace.local.json`).
+4. Run the resolver: `python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py list` (`python` instead of `python3` on Windows; after copying `spec-kit-workspace.local.json.template` to `spec-kit-workspace.local.json`).
 5. If you changed a manifest, run `python -c "import yaml,sys; yaml.safe_load(open(sys.argv[1]))" <file>` on it.
+
+Run `specify` commands only inside the scratch workspace, never with the toolkit checkout as the working directory: the CLI writes a `.specify/` cache wherever it runs, and the toolkit must not contain one.
 
 ## Conventions
 

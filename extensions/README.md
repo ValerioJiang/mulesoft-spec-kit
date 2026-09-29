@@ -7,7 +7,7 @@ Each directory here is a self-contained [Spec Kit extension](https://github.com/
 | [`technical-solution`](technical-solution/) | The central workspace itself: setup, initiative orchestration, cross-domain review, shared templates, the source-repository resolver and the workspace seed files. Required by every other extension here. | `/speckit-technical-solution-setup`, `-run`, `-review` |
 | [`mulesoft`](mulesoft/) | MuleSoft lifecycle stages for any Mule 4 / Anypoint repository: requirements, contracts, plan, tasks, implementation, QA, verification, change, PR, deploy, UAT, release. | 14 × `/speckit-mulesoft-<stage>` |
 | [`salesforce`](salesforce/) | Salesforce design stages for any Salesforce DX repository, with a read-only DX MCP gate. | 4 × `/speckit-salesforce-<stage>` |
-| [`sf-workspace`](sf-workspace/) | Adapter that runs the 19 [SFSpeckit](https://github.com/ysumanth06/spec-kit-sf) prompts (vendored, MIT) against the central workspace. | 19 × `/speckit-sf-workspace-<stage>` |
+| [`sf-workspace`](sf-workspace/) | Opt-in add-on: the 14 extended [SFSpeckit](https://github.com/ysumanth06/spec-kit-sf) stages (stories through UAT; vendored, MIT) on top of the `salesforce` design stages, with an execution gate for the deploy, login and test commands they contain. | 14 × `/speckit-sf-workspace-<stage>` |
 
 The core commands (`/speckit-specify`, `/speckit-plan`, ...) are adapted to the central workspace by the [`central-workspace` preset](../presets/central-workspace/), and the whole set is described by the [`central-workspace` bundle](../bundles/central-workspace/).
 
@@ -16,21 +16,22 @@ The core commands (`/speckit-specify`, `/speckit-plan`, ...) are adapted to the 
 From an initialised Spec Kit project (or when creating one):
 
 ```bash
-# into an existing project
+# into an existing project: the preset first, it is required
+specify preset add --dev /path/to/this-repo/presets/central-workspace
 specify extension add --dev /path/to/this-repo/extensions/technical-solution
 specify extension add --dev /path/to/this-repo/extensions/mulesoft
 specify extension add --dev /path/to/this-repo/extensions/salesforce
-specify extension add --dev /path/to/this-repo/extensions/sf-workspace   # optional
+specify extension add --dev /path/to/this-repo/extensions/sf-workspace   # optional add-on
 
 # or in one go while creating the workspace
-specify init my-workspace --integration claude \
+specify init my-workspace --integration claude --script sh \
   --preset /path/to/this-repo/presets/central-workspace \
   --extension /path/to/this-repo/extensions/technical-solution \
   --extension /path/to/this-repo/extensions/mulesoft \
   --extension /path/to/this-repo/extensions/salesforce
 ```
 
-`scripts/bash/create-workspace.sh` runs these steps for you. Once the extensions are published in an HTTPS catalog, `catalog.json` in this directory is the catalog entry set to serve, and the bundle can be installed with `specify bundle install central-workspace`.
+`scripts/bash/create-workspace.sh` (or `scripts/powershell/create-workspace.ps1`) runs these steps, verifies the result and seeds `.gitignore`; `--with-sf-workspace` adds the add-on and `--update` refreshes an existing workspace. Once the four catalogs of this repository are served over HTTPS (see [bundles](../bundles/README.md)), `catalog.json` in this directory is the extension catalog and the bundle can be installed with `specify bundle install central-workspace`.
 
 ## Conventions shared by all extensions here
 

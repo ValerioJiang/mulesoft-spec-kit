@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-29T00:00:00Z",
+  "catalog_url": "<https-url-of-this-file-when-served>",
+  "workflows": {
+    "technical-solution": {
+      "id": "technical-solution",
+      "name": "Cross-platform Technical Solution",
+      "description": "Runs or resumes the complete cross-platform Spec Kit lifecycle in the central workspace, then pauses at a review gate",
+      "author": "Spec Kit Workspace",
+      "version": "2.1.0",
+      "url": "<https-url-of-workflows/technical-solution/workflow.yml-when-served>",
+      "tags": ["workspace", "multi-repo", "solution-design"]
+    }
+  }
+}

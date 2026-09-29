@@ -2,33 +2,28 @@ schema_version: "1.0"
 
 extension:
   id: "sf-workspace"
-  name: "SFSpeckit central-workspace adapter"
-  version: "2.0.0"
-  description: "Runs the 19 SFSpeckit (spec-kit-sf 2.0.0) Salesforce lifecycle prompts against a central Spec Kit workspace instead of a single DX repository."
+  name: "SFSpeckit central-workspace add-on"
+  version: "2.1.0"
+  description: "Extended Salesforce lifecycle stages (stories, implementation, QA, scoring, hotfix, regression, release notes, UAT) from SFSpeckit 2.0.0, adapted to a central Spec Kit workspace. Design stages come from the salesforce extension."
   author: "Spec Kit Workspace (prompts by Sumanth Yanamala, MIT)"
   repository: "https://github.com/ysumanth06/spec-kit-sf"
   license: "MIT"
 
 requires:
   speckit_version: ">=1.0.0"
+  tools:
+    - name: "sf"
+      version: ">=2.0.0"
+      required: true
+    - name: "gh"
+      version: ">=2.0.0"
+      required: false
 
 provides:
   commands:
     - name: "speckit.sf-workspace.setup"
       file: "commands/setup.md"
       description: "Automated dependency checker and installer (sf, gh, sf-scanner)."
-    - name: "speckit.sf-workspace.constitution"
-      file: "commands/constitution.md"
-      description: "Establish Salesforce project principles with 9 articles and environmental discovery."
-    - name: "speckit.sf-workspace.specify"
-      file: "commands/specify.md"
-      description: "Create a Salesforce feature spec with object maps and security model."
-    - name: "speckit.sf-workspace.clarify"
-      file: "commands/clarify.md"
-      description: "Analyze the feature specification for gaps and edge cases with stakeholder sign-off."
-    - name: "speckit.sf-workspace.plan"
-      file: "commands/plan.md"
-      description: "Create a technical plan with force-app structure and blast radius analysis."
     - name: "speckit.sf-workspace.stories"
       file: "commands/stories.md"
       description: "Generate Jira-ready developer stories with security matrices."
@@ -38,9 +33,6 @@ provides:
     - name: "speckit.sf-workspace.implement"
       file: "commands/implement.md"
       description: "Implement a story file with auto-heal loop and scoring gates."
-    - name: "speckit.sf-workspace.review"
-      file: "commands/review.md"
-      description: "TPO and Architect review of generated stories before Jira creation."
     - name: "speckit.sf-workspace.change"
       file: "commands/change.md"
       description: "Handle mid-sprint requirement changes with impact analysis."

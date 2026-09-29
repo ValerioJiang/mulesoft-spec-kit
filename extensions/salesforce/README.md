@@ -22,4 +22,4 @@ The rules shared by all four stages are in `lifecycle.md`.
 
 ## Full lifecycle
 
-These stages cover design only; they never implement, test, deploy or mutate an org. The full 19-stage Salesforce lifecycle (stories, implement, QA, PR, deploy, UAT, release notes and more) is provided by the sibling `sf-workspace` extension, an adapter of the upstream SFSpeckit prompts.
+These stages cover design only; they never implement, test, deploy or mutate an org. The extended lifecycle (stories through UAT: stories, analyze, implement, change, QA, PR, verify, deploy, score, hotfix, regression, release notes, UAT) is provided by the optional `sf-workspace` add-on (14 stages), an adapter of the upstream SFSpeckit prompts that requires this extension and extends its artifacts without replacing them.

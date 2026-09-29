@@ -12,6 +12,15 @@ All notable changes to this repository are documented here. The format follows [
 - The extension formerly installed as `sf` is now `sf-workspace`; its commands are `/speckit-sf-workspace-<stage>` and the vendored SFSpeckit prompts live under `prompts/`.
 - The source-repository resolver now discovers the workspace root by walking up to `spec-kit-workspace.json` and is shipped by the `technical-solution` extension.
 
+### Fixed (adversarial review of the restructure)
+
+- `sf-workspace` is now an opt-in add-on with the 14 extended stages only; its `specify`, `clarify`, `plan`, `review` and `constitution` wrappers were removed because they overwrote the artifacts of the `salesforce` extension and the workspace constitution. Its vendored templates moved to `sf-templates/` so they no longer shadow core and workspace templates by name, `requires.tools` (sf, gh) is declared again, every wrapper carries an execution gate for the deploy, login and test commands in the prompts, and upstream's changelog is no longer installed.
+- The `salesforce` adapter no longer requires `sf-workspace`; the extended stages read it only when installed and extend its artifacts instead of replacing them.
+- The preset is documented and checked as mandatory (`run` and `setup` stop without it); the preset's plan and tasks templates describe the workspace layout instead of `specs/[###-feature]/` and `research.md`; `/speckit-specify` writes `common/initiative.md`, the name every template and manifest already used.
+- Domain commands honour `artifact_layout` from `spec-kit-workspace.json` instead of hard-coding `initiatives/<id>/`; the orchestrator now owns `initiative.yml.state`, derives filesystem-safe IDs and refuses to edit a dirty repository without confirmation.
+- `create-workspace.sh` refuses to run inside the toolkit or on an existing workspace (use `--update`), verifies every component (the CLI returns 0 on failed installs), seeds `.gitignore`, defaults to `--script sh` (the PowerShell resolver needs `python3`, absent on Windows), makes `sf-workspace` opt-in, and has a PowerShell twin. The resolver reports a missing `git` executable cleanly. Docs say `python3` on Linux/macOS and `python` on Windows.
+- The workflow takes an `integration` input (default `auto`) instead of being pinned to Claude; preset, workflow and bundle catalogs were added next to the extension catalog with the publishing steps the bundle needs; `.gitattributes` normalises line endings; a smoke workflow for CI creates a workspace and checks the generated commands.
+
 ### Added
 
 - `speckit.technical-solution.setup`: creates the workspace files without overwriting anything.
