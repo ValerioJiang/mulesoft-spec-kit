@@ -15,7 +15,7 @@ and artifact policy live in that workspace, not in this adapter.
 ## Required startup
 
 1. Locate the workspace root. This plugin is published from
-   `<workspace>/claude-marketplace/plugins/speckit-workspace/`, so the workspace root is
+   `<workspace>/claude-marketplace/plugins/mulesoft-spec-kit/`, so the workspace root is
    `${CLAUDE_PLUGIN_ROOT}/../../..`. If that variable is unavailable, use the single directory under
    the current project root that contains `spec-kit-workspace.json`; if none or more than one
    exists, stop and report it. Refer to the resolved directory as `<workspace>` below.

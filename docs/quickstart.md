@@ -14,8 +14,8 @@ Other installation methods are in the [Spec Kit installation guide](https://gith
 Clone this repository once (it is the source of the building blocks, not the workspace itself), then create a workspace next to it:
 
 ```bash
-git clone https://github.com/ValerioJiang/spec-kit-workspace.git spec-kit-workspace
-spec-kit-workspace/scripts/bash/create-workspace.sh my-workspace --integration claude
+git clone https://github.com/ValerioJiang/mulesoft-spec-kit.git mulesoft-spec-kit
+mulesoft-spec-kit/scripts/bash/create-workspace.sh my-workspace --integration claude
 ```
 
 The script is equivalent to:
@@ -23,14 +23,14 @@ The script is equivalent to:
 ```bash
 mkdir my-workspace && cd my-workspace
 specify init --here --force --non-interactive --ignore-agent-tools --integration claude --script sh \
-  --preset    ../spec-kit-workspace/presets/central-workspace \
-  --extension ../spec-kit-workspace/extensions/technical-solution \
-  --extension ../spec-kit-workspace/extensions/mulesoft \
-  --extension ../spec-kit-workspace/extensions/salesforce
-specify workflow add --dev ../spec-kit-workspace/workflows/technical-solution
+  --preset    ../mulesoft-spec-kit/presets/central-workspace \
+  --extension ../mulesoft-spec-kit/extensions/technical-solution \
+  --extension ../mulesoft-spec-kit/extensions/mulesoft \
+  --extension ../mulesoft-spec-kit/extensions/salesforce
+specify workflow add --dev ../mulesoft-spec-kit/workflows/technical-solution
 ```
 
-plus a `.gitignore` seed and a check that every component is present (`specify init` returns 0 even when a component fails to install). The preset is not optional: without it the core commands write to `specs/` instead of `initiatives/`. Add `--extension ../spec-kit-workspace/extensions/sf-workspace` (script: `--with-sf-workspace`) only if you want the extended Salesforce add-on; its prompts contain deploy and login commands, gated to explicit requests. After a toolkit update, refresh an existing workspace with `create-workspace.sh my-workspace --update`. On Windows use the PowerShell twin `scripts\powershell\create-workspace.ps1` or Git Bash; keep `--script sh` unless your agent runs `python3` from PowerShell.
+plus a `.gitignore` seed and a check that every component is present (`specify init` returns 0 even when a component fails to install). The preset is not optional: without it the core commands write to `specs/` instead of `initiatives/`. Add `--extension ../mulesoft-spec-kit/extensions/sf-workspace` (script: `--with-sf-workspace`) only if you want the extended Salesforce add-on; its prompts contain deploy and login commands, gated to explicit requests. After a toolkit update, refresh an existing workspace with `create-workspace.sh my-workspace --update`. On Windows use the PowerShell twin `scripts\powershell\create-workspace.ps1` or Git Bash; keep `--script sh` unless your agent runs `python3` from PowerShell.
 
 Use any integration Spec Kit supports in place of `claude`; the commands are generated from the same sources. Put the workspace under version control: it is where every initiative's artifacts will live.
 

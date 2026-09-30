@@ -6,7 +6,7 @@ bundle:
   version: "1.0.0"
   role: "developer"
   description: "Everything needed to run a central multi-repository Spec Kit workspace for Salesforce and MuleSoft initiatives: the workspace extension, the domain extensions, the central-workspace preset and the technical-solution workflow."
-  author: "Spec Kit Workspace"
+  author: "MuleSoft Spec Kit"
   license: "MIT"
 
 requires:

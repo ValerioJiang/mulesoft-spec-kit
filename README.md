@@ -1,12 +1,12 @@
 <div align="center">
 
-# Spec Kit Workspace
+# MuleSoft Spec Kit
 
 **Spec-Driven Development for multi-repository Salesforce and MuleSoft solutions, built on [GitHub Spec Kit](https://github.com/github/spec-kit).**
 
 </div>
 
-Spec Kit Workspace turns Spec Kit into a *central workspace*: one repository that holds the specifications, plans, tasks and evidence of every initiative, while the application code stays in the repositories it belongs to. It ships as ordinary Spec Kit building blocks (extensions, a preset, a workflow and a bundle), so it installs with the `specify` CLI into any project that will serve as a central workspace, and it assumes nothing about your organisation, repositories, orgs or runtimes.
+MuleSoft Spec Kit turns Spec Kit into a *central workspace*: one repository that holds the specifications, plans, tasks and evidence of every initiative, while the application code stays in the repositories it belongs to. It ships as ordinary Spec Kit building blocks (extensions, a preset, a workflow and a bundle), so it installs with the `specify` CLI into any project that will serve as a central workspace, and it assumes nothing about your organisation, repositories, orgs or runtimes.
 
 ## What you get
 
@@ -26,8 +26,8 @@ Spec Kit Workspace turns Spec Kit into a *central workspace*: one repository tha
 2. Create a workspace from this checkout:
 
    ```bash
-   git clone https://github.com/ValerioJiang/spec-kit-workspace.git spec-kit-workspace
-   spec-kit-workspace/scripts/bash/create-workspace.sh ../my-workspace --integration claude
+   git clone https://github.com/ValerioJiang/mulesoft-spec-kit.git mulesoft-spec-kit
+   mulesoft-spec-kit/scripts/bash/create-workspace.sh ../my-workspace --integration claude
    ```
 
    The script runs `specify init` with the `central-workspace` preset and the `technical-solution`, `mulesoft` and `salesforce` extensions, installs the workflow, verifies every component and seeds `.gitignore`. Add `--with-sf-workspace` for the extended Salesforce add-on and `--update` to refresh an existing workspace after a toolkit update; a PowerShell twin is in `scripts/powershell/`. The equivalent manual commands are in the [quickstart](docs/quickstart.md).
@@ -74,6 +74,10 @@ Earlier versions of this repository were a pre-initialised workspace (root `.spe
 ## Upstream sources
 
 `upstream/spec-kit` and `upstream/spec-kit-sf` are Git submodules pinned to reviewed revisions; they are reference material, not runtime dependencies. Initialise them with `git submodule update --init --recursive` when you want to compare against upstream.
+
+## Acknowledgements
+
+MuleSoft Spec Kit is built on [GitHub Spec Kit](https://github.com/github/spec-kit) by GitHub (MIT): the `specify` CLI, the extension, preset, workflow and bundle system, the core templates and the Spec-Driven Development process that this toolkit adapts to a central multi-repository workspace. The Salesforce add-on vendors the prompts of [SFSpeckit (spec-kit-sf)](https://github.com/ysumanth06/spec-kit-sf) by Sumanth Yanamala (MIT). Both projects are pinned as submodules under `upstream/` for reference; thank you to their authors.
 
 ## Contributing and license
 

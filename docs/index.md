@@ -1,6 +1,6 @@
-# Spec Kit Workspace documentation
+# MuleSoft Spec Kit documentation
 
-Spec Kit Workspace packages a *central workspace* for Spec-Driven Development across several application repositories (Salesforce, MuleSoft, and any further domain with an adapter) as standard [Spec Kit](https://github.com/github/spec-kit) building blocks.
+MuleSoft Spec Kit packages a *central workspace* for Spec-Driven Development across several application repositories (Salesforce, MuleSoft, and any further domain with an adapter) as standard [Spec Kit](https://github.com/github/spec-kit) building blocks. It is built on [GitHub Spec Kit](https://github.com/github/spec-kit) (MIT) and, for the Salesforce add-on, on [SFSpeckit](https://github.com/ysumanth06/spec-kit-sf) (MIT); see the acknowledgements in the README.
 
 ## Getting started
 

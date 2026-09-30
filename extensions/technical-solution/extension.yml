@@ -5,8 +5,8 @@ extension:
   name: "Technical Solution Workspace"
   version: "3.0.0"
   description: "Central multi-repository Spec Kit workspace: initiative orchestration, cross-domain review, shared templates and the source-repository resolver."
-  author: "Spec Kit Workspace"
-  repository: "https://github.com/ValerioJiang/spec-kit-workspace"
+  author: "MuleSoft Spec Kit"
+  repository: "https://github.com/ValerioJiang/mulesoft-spec-kit"
   license: "MIT"
 
 requires:

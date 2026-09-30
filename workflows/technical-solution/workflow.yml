@@ -3,7 +3,7 @@ workflow:
   id: "technical-solution"
   name: "Cross-platform Technical Solution"
   version: "2.1.0"
-  author: "Spec Kit Workspace"
+  author: "MuleSoft Spec Kit"
   description: "Runs or resumes the complete cross-platform Spec Kit lifecycle in the central workspace."
 
 requires:

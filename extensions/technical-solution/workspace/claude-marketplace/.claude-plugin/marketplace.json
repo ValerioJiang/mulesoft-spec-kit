@@ -1,13 +1,13 @@
 {
-  "name": "speckit-workspace",
+  "name": "mulesoft-spec-kit",
   "description": "Claude Code plugin exposing the central Spec Kit workspace lifecycle to a parent repository.",
   "owner": {
-    "name": "Spec Kit Workspace"
+    "name": "MuleSoft Spec Kit"
   },
   "plugins": [
     {
-      "name": "speckit-workspace",
-      "source": "./plugins/speckit-workspace",
+      "name": "mulesoft-spec-kit",
+      "source": "./plugins/mulesoft-spec-kit",
       "description": "Orchestrates the end-to-end Spec Kit lifecycle from a repository that mounts the workspace as a submodule."
     }
   ]

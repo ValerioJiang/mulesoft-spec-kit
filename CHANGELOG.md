@@ -2,6 +2,12 @@
 
 All notable changes to this repository are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Changed
+
+- Renamed to MuleSoft Spec Kit. The repository is now https://github.com/ValerioJiang/mulesoft-spec-kit (the previous name redirects), the Claude Code plugin is `mulesoft-spec-kit` (`/mulesoft-spec-kit:run`), and the README credits GitHub Spec Kit and SFSpeckit. Catalog registration commands documented with the `--install-allowed` policy the CLI requires.
+
 ## [0.1.0] - 2026-09-30
 
 ### Changed
@@ -26,10 +32,10 @@ All notable changes to this repository are documented here. The format follows [
 - `speckit.technical-solution.setup`: creates the workspace files without overwriting anything.
 - `presets/central-workspace`: core `specify`, `clarify`, `plan`, `tasks`, `analyze`, `implement` and `converge` overrides plus `review`, `verify` and `release`, and the workspace-aware plan, tasks, checklist and constitution templates.
 - `bundles/central-workspace`, `extensions/catalog.json` and `scripts/bash/create-workspace.sh`.
-- Repository published at https://github.com/ValerioJiang/spec-kit-workspace; manifests carry the `repository` URL, the catalogs are served from `main` and point at the `v0.1.0` release assets built by `scripts/python/build-release-assets.py`.
+- Repository published at https://github.com/ValerioJiang/mulesoft-spec-kit; manifests carry the `repository` URL, the catalogs are served from `main` and point at the `v0.1.0` release assets built by `scripts/python/build-release-assets.py`.
 - MIT license.
 
-[0.1.0]: https://github.com/ValerioJiang/spec-kit-workspace/releases/tag/v0.1.0
+[0.1.0]: https://github.com/ValerioJiang/mulesoft-spec-kit/releases/tag/v0.1.0
 
 ## Earlier history
 

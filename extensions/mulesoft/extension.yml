@@ -5,8 +5,8 @@ extension:
   name: "MuleSoft Technical Solution"
   version: "2.0.0"
   description: "MuleSoft lifecycle stages for a central Spec Kit workspace: requirements, contracts, planning, tasks, implementation, verification, review and release for any Mule 4 repository."
-  author: "Spec Kit Workspace"
-  repository: "https://github.com/ValerioJiang/spec-kit-workspace"
+  author: "MuleSoft Spec Kit"
+  repository: "https://github.com/ValerioJiang/mulesoft-spec-kit"
   license: "MIT"
 
 requires:

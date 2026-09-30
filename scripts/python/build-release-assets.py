@@ -8,7 +8,7 @@ whose tag matches the `download_url` entries in `extensions/catalog.json` and `p
 (currently `v0.1.0`):
 
     python scripts/python/build-release-assets.py
-    gh release create v0.1.0 dist/*.zip --title "Spec Kit Workspace 0.1.0" --notes-file CHANGELOG.md
+    gh release create v0.1.0 dist/*.zip --title "MuleSoft Spec Kit 0.1.0" --notes-file CHANGELOG.md
 
 Python 3.11+ standard library only.
 """

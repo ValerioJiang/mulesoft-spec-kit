@@ -7,29 +7,29 @@ The `technical-solution` extension ships a small local marketplace for that case
 ```text
 claude-marketplace/
 ├── .claude-plugin/marketplace.json
-└── plugins/speckit-workspace/
+└── plugins/mulesoft-spec-kit/
     ├── .claude-plugin/plugin.json
     └── skills/run/SKILL.md
 ```
 
-The marketplace is a catalog; the plugin is the installable unit; the skill is the invocable command `/speckit-workspace:run`. The skill is a thin adapter: it does not duplicate the workflow, the resolver or the gates. It locates the workspace root from its own position (`${CLAUDE_PLUGIN_ROOT}/../../..`), reads the workspace's generated `/speckit-technical-solution-run` skill and follows it, running Spec Kit commands with the workspace as their working directory while the Claude session stays rooted in the parent repository.
+The marketplace is a catalog; the plugin is the installable unit; the skill is the invocable command `/mulesoft-spec-kit:run`. The skill is a thin adapter: it does not duplicate the workflow, the resolver or the gates. It locates the workspace root from its own position (`${CLAUDE_PLUGIN_ROOT}/../../..`), reads the workspace's generated `/speckit-technical-solution-run` skill and follows it, running Spec Kit commands with the workspace as their working directory while the Claude session stays rooted in the parent repository.
 
 ## Setup in the parent repository
 
-From the root of the parent repository, add and initialise the submodule (here called `spec-kit-workspace`; the name is free):
+From the root of the parent repository, add and initialise the submodule (here called `mulesoft-spec-kit`; the name is free):
 
 ```bash
-git submodule add <workspace-url> spec-kit-workspace
-git submodule update --init --recursive spec-kit-workspace
+git submodule add <workspace-url> mulesoft-spec-kit
+git submodule update --init --recursive mulesoft-spec-kit
 ```
 
 Each developer registers the local marketplace and installs the plugin once at project scope:
 
 ```bash
-claude plugin marketplace add ./spec-kit-workspace/claude-marketplace
-claude plugin install speckit-workspace@speckit-workspace --scope project
+claude plugin marketplace add ./mulesoft-spec-kit/claude-marketplace
+claude plugin install mulesoft-spec-kit@mulesoft-spec-kit --scope project
 ```
 
-The project configuration then declares the marketplace with a path relative to the parent repository and enables the plugin for it. After trusting the parent folder, every collaborator runs both commands on their own machine. Claude Code is started from the parent root, where the lifecycle starts or resumes with `/speckit-workspace:run`.
+The project configuration then declares the marketplace with a path relative to the parent repository and enables the plugin for it. After trusting the parent folder, every collaborator runs both commands on their own machine. Claude Code is started from the parent root, where the lifecycle starts or resumes with `/mulesoft-spec-kit:run`.
 
 To develop the skill from the local checkout there is no need for a second marketplace: the plugin files are read directly from the submodule, and changes are picked up after a new session or `/reload-plugins`. Changes meant for the team are versioned in the workspace and selected by updating the gitlink in the parent repository.

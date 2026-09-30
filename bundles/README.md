@@ -12,16 +12,16 @@ Bundle components are resolved by catalog ID through each primitive's own catalo
 
 | Catalog | Served at | Registered with |
 | --- | --- | --- |
-| extensions | `https://raw.githubusercontent.com/ValerioJiang/spec-kit-workspace/main/extensions/catalog.json` | `specify extension catalog add <url>` |
-| presets | `https://raw.githubusercontent.com/ValerioJiang/spec-kit-workspace/main/presets/catalog.json` | `specify preset catalog add <url>` |
-| workflows | `https://raw.githubusercontent.com/ValerioJiang/spec-kit-workspace/main/workflows/catalog.json` | `specify workflow catalog add <url>` |
-| bundles | `https://raw.githubusercontent.com/ValerioJiang/spec-kit-workspace/main/bundles/catalog.json` | `specify bundle catalog add <url>` |
+| extensions | `https://raw.githubusercontent.com/ValerioJiang/mulesoft-spec-kit/main/extensions/catalog.json` | `specify extension catalog add <url> --name mulesoft-spec-kit --install-allowed` |
+| presets | `https://raw.githubusercontent.com/ValerioJiang/mulesoft-spec-kit/main/presets/catalog.json` | `specify preset catalog add <url> --name mulesoft-spec-kit --install-allowed` |
+| workflows | `https://raw.githubusercontent.com/ValerioJiang/mulesoft-spec-kit/main/workflows/catalog.json` | `specify workflow catalog add <url>` |
+| bundles | `https://raw.githubusercontent.com/ValerioJiang/mulesoft-spec-kit/main/bundles/catalog.json` | `specify bundle catalog add <url> --policy install-allowed --id mulesoft-spec-kit` |
 
-The workflow and the bundle are downloaded as raw files, so they work as soon as `main` is pushed. Extensions and the preset are downloaded as archives with the component directory as the single top-level folder, so a release must exist with those assets attached. The catalogs point at release `v0.1.0`:
+User-added extension and preset catalogs are discovery-only unless `--install-allowed` is given, and bundle catalogs need `--policy install-allowed`; workflow catalogs allow installs by default. The workflow and the bundle are downloaded as raw files, so they work as soon as `main` is pushed. Extensions and the preset are downloaded as archives with the component directory as the single top-level folder, so a release must exist with those assets attached. The catalogs point at release `v0.1.0`:
 
 ```bash
 python scripts/python/build-release-assets.py          # writes dist/<id>-<version>.zip
-gh release create v0.1.0 dist/*.zip --title "Spec Kit Workspace 0.1.0" --notes-file CHANGELOG.md
+gh release create v0.1.0 dist/*.zip --title "MuleSoft Spec Kit 0.1.0" --notes-file CHANGELOG.md
 ```
 
 When a component version changes, update its `download_url` (and the release tag) in the catalog before cutting the next release. `specify bundle validate --path bundles/central-workspace` reports unresolved components until the catalogs are registered in a project; that is expected.

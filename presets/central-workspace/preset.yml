@@ -5,8 +5,8 @@ preset:
   name: "Central Workspace"
   version: "1.0.0"
   description: "Core Spec Kit commands and templates adapted to a central multi-repository workspace where artifacts live under initiatives/<id>/<domain>/."
-  author: "Spec Kit Workspace"
-  repository: "https://github.com/ValerioJiang/spec-kit-workspace"
+  author: "MuleSoft Spec Kit"
+  repository: "https://github.com/ValerioJiang/mulesoft-spec-kit"
   license: "MIT"
 
 requires:
