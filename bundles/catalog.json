@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-29T00:00:00Z",
+  "updated_at": "2026-09-30T00:00:00Z",
   "catalog_url": "https://raw.githubusercontent.com/ValerioJiang/mulesoft-spec-kit/main/bundles/catalog.json",
   "bundles": {
     "central-workspace": {
       "id": "central-workspace",
       "name": "Central Technical Solution Workspace",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "role": "developer",
-      "description": "Everything needed to run a central multi-repository Spec Kit workspace for Salesforce and MuleSoft initiatives.",
+      "description": "Everything needed to run a central multi-repository Spec Kit workspace for Salesforce and MuleSoft initiatives: the workspace extension, the mulesoft and salesforce extensions, the central-workspace preset and the technical-solution workflow. The sf-workspace add-on is installed separately.",
       "author": "MuleSoft Spec Kit",
       "license": "MIT",
       "download_url": "https://raw.githubusercontent.com/ValerioJiang/mulesoft-spec-kit/main/bundles/central-workspace/bundle.yml",
@@ -16,7 +16,7 @@
         "speckit_version": ">=1.0.0"
       },
       "provides": {
-        "extensions": 4,
+        "extensions": 3,
         "presets": 1,
         "steps": 0,
         "workflows": 1

@@ -1,5 +1,5 @@
 ---
-description: Promote Salesforce code across environments (Dev to QA to UAT to Prod).
+description: Promote Salesforce code to an explicitly named target environment.
 argument-hint: <initiative-id> <target>
 ---
 

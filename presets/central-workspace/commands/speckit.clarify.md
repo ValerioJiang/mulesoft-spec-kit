@@ -1,5 +1,5 @@
 ---
-description: Find and resolve missing initiative decisions without inventing answers.
+description: Find and record missing initiative decisions without inventing answers.
 argument-hint: <initiative-id> [domain]
 ---
 

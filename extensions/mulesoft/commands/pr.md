@@ -15,4 +15,4 @@ Read `.specify/extensions/technical-solution/docs/workflow-contract.md` and `.sp
 
 ## Stage
 
-Compare the selected diff with approved tasks, plan, tests and contract compatibility. Use only the review convention discovered in the chosen repository. Record findings and revision in central `mulesoft/review.md`. Creating a PR/MR, assigning reviewers or sending a notification requires a direct user request and an explicitly selected repository/target branch.
+Compare the selected diff with approved tasks, plan, tests and contract compatibility. Use only the review convention discovered in the chosen repository. Append the change review and the revision it covers to central `mulesoft/review.md`, below the design review and without replacing it. Creating a PR/MR, assigning reviewers or sending a notification requires a direct user request and an explicitly selected repository/target branch.

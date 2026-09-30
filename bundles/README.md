@@ -4,7 +4,7 @@ A [bundle](https://github.com/github/spec-kit/blob/main/docs/reference/bundles.m
 
 | Bundle | Contents |
 | --- | --- |
-| [`central-workspace`](central-workspace/bundle.yml) | Extensions `technical-solution`, `mulesoft`, `salesforce`, `sf-workspace`; preset `central-workspace`; workflow `technical-solution`. |
+| [`central-workspace`](central-workspace/bundle.yml) | Extensions `technical-solution`, `mulesoft`, `salesforce`; preset `central-workspace`; workflow `technical-solution`. The `sf-workspace` add-on is not part of it. |
 
 ## Publishing, so that `specify bundle install central-workspace` works
 
@@ -17,13 +17,15 @@ Bundle components are resolved by catalog ID through each primitive's own catalo
 | workflows | `https://raw.githubusercontent.com/ValerioJiang/mulesoft-spec-kit/main/workflows/catalog.json` | `specify workflow catalog add <url>` |
 | bundles | `https://raw.githubusercontent.com/ValerioJiang/mulesoft-spec-kit/main/bundles/catalog.json` | `specify bundle catalog add <url> --policy install-allowed --id mulesoft-spec-kit` |
 
-User-added extension and preset catalogs are discovery-only unless `--install-allowed` is given, and bundle catalogs need `--policy install-allowed`; workflow catalogs allow installs by default. The workflow and the bundle are downloaded as raw files, so they work as soon as `main` is pushed. Extensions and the preset are downloaded as archives with the component directory as the single top-level folder, so a release must exist with those assets attached. The catalogs point at release `v0.1.0`:
+User-added extension and preset catalogs are discovery-only unless `--install-allowed` is given, and bundle catalogs need `--policy install-allowed`; workflow catalogs allow installs by default. The workflow and the bundle are downloaded as raw files, so they work as soon as `main` is pushed. Extensions and the preset are downloaded as archives with the component directory as the single top-level folder, so a release must exist with those assets attached. The catalogs name the release tag in their `download_url` entries, and the build script reads it from there:
 
 ```bash
-python scripts/python/build-release-assets.py          # writes dist/<id>-<version>.zip
-gh release create v0.1.0 dist/*.zip --title "MuleSoft Spec Kit 0.1.0" --notes-file CHANGELOG.md
+python scripts/python/build-release-assets.py          # writes dist/<tag>/<id>-<version>.zip
+gh release create <tag> dist/<tag>/*.zip --title "MuleSoft Spec Kit <version>" --notes "<that version's section of CHANGELOG.md>"
 ```
 
-When a component version changes, update its `download_url` (and the release tag) in the catalog before cutting the next release. `specify bundle validate --path bundles/central-workspace` reports unresolved components until the catalogs are registered in a project; that is expected.
+Create the tag on the commit the archives were built from, so that the release's source and its assets are the same tree.
 
-Without the catalogs, install the same set from a local checkout with `scripts/bash/create-workspace.sh <target-dir>` (or `scripts/powershell/create-workspace.ps1`) or with the explicit `specify init --preset ... --extension ...` commands in the [quickstart](../docs/quickstart.md). The `sf-workspace` add-on is opt-in there (`--with-sf-workspace`) even though the bundle lists it.
+When a component version changes, update its version and `download_url` (and the release tag) in the catalog before cutting the next release; `python scripts/python/check-consistency.py` fails until manifests, catalogs and the bundle agree. `specify bundle validate --path bundles/central-workspace` reports unresolved components until the catalogs are registered in a project; that is expected.
+
+Without the catalogs, install the same set from a local checkout with `scripts/bash/create-workspace.sh <target-dir>` (or `scripts/powershell/create-workspace.ps1`) or with the explicit `specify init --preset ... --extension ...` commands in the [quickstart](../docs/quickstart.md). The `sf-workspace` add-on is opt-in on every path: `--with-sf-workspace` with the scripts, `specify extension add sf-workspace` once the extension catalog is registered.

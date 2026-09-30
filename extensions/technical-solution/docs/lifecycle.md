@@ -30,7 +30,7 @@ Only create domain directories for confirmed scope. Never put generated artifact
 | Review / PR | Cross-domain consistency and approvals | Repository-native review request | Repository-native review request |
 | Deploy / UAT / Release | Release record and cross-domain state | Salesforce target selected by user and project policy | Anypoint target selected by user and deployment policy |
 
-Stages can be invoked separately. The orchestrator may run the next read/write stage only when the current stage's prerequisites are met. Tests, remote writes, PR/MR creation, deployments, Jira changes and Anypoint/Salesforce mutations require a direct user request for that action; they are never automatic hooks.
+Stages can be invoked separately. The orchestrator may run the next read/write stage only when the current stage's prerequisites are met. Tests, remote writes, PR/MR creation, deployments, tracker changes and Anypoint/Salesforce mutations require a direct user request for that action; they are never automatic hooks.
 
 ## Source repository selection
 

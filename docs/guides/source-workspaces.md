@@ -24,6 +24,10 @@ Copy `spec-kit-workspace.local.json.template` to `spec-kit-workspace.local.json`
 
 The `salesforce-app` profile uses `git-root` and points to a single repository; it can constrain the expected remote with the optional `expected_remote` field. `mulesoft-catalog` uses `path-remote-manifest` on the `repos.conf` manifest of the registered root: a text file with one line per repository (`<relative-path> <remote-url>`, comments with `#`) that lists the nested application repositories. Local paths are relative to the root of this workspace. For a new workspace, version its profile and add only the local path; for a new format, implement and register an adapter once, without changing the skills. CLI dispatch is based on the adapter registry: the central registry contains no platform-specific branches.
 
+From `source_resolution` the resolver reads `profile_collection`, `local_collection`, the four field lists, `resolvers.<id>.required_profile_fields` and `absolute_roots_allowed`. The other keys (`selection`, `manifest_format`, `comment_prefix`, `reject_path_traversal`, `filesystem_search`, `path_policy` and the like) describe behaviour that is fixed in the resolver code for agents and readers; editing them changes nothing.
+
+A remote named in a catalog manifest or in `expected_remote` must be host-based (`https://host/path` or `host:path`). A repository whose `origin` is a filesystem path, or that has no `origin`, resolves with `remote_identity: null`, because a local path identifies nothing outside one machine.
+
 ## Shared CLI
 
 All skills use the CLI indicated by `source_resolution.entrypoint` in the root manifest. Skills do not interpret the local configuration or the repository manifests directly.
@@ -33,6 +37,8 @@ All skills use the CLI indicated by `source_resolution.entrypoint` in the root m
 python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py list --domain mulesoft
 python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py resolve 'mulesoft-catalog:experience/orders-xapi'
 python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py resolve salesforce-app
+# a one-off root that is not registered: it passes the same Git checks
+python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py resolve --root ../one-off-repository --domain mulesoft
 ```
 
 Catalog selection is exact: `<workspace-id>:<relative-repository-path>`. The resolver reads only the manifest declared by the profile, rejects duplicate paths or paths that escape the root, verifies the expected remote and that the selected path coincides with the Git root. It reports repository identity, branch, commit and working tree. Unconfigured local roots or missing checkouts produce an explicit error; the first result is not chosen, the filesystem is not searched and repositories are not cloned. A root passed for a single invocation must pass the same Git checks.

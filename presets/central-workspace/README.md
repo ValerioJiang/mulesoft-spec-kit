@@ -25,6 +25,8 @@ Use it in a workspace created for the `technical-solution` extension from this r
 
 The preset replaces the core `speckit.specify`, `speckit.clarify`, `speckit.plan`, `speckit.tasks`, `speckit.analyze`, `speckit.implement` and `speckit.converge` commands with central-workspace versions, and adds `speckit.review`, `speckit.verify` and `speckit.release`. It also overrides the `plan-template`, `tasks-template`, `checklist-template` and `constitution-template` templates with workspace-aware ones; commands resolve them by name, so the override is picked up through the normal template stack.
 
+The core `speckit.checklist`, `speckit.constitution` and `speckit.taskstoissues` commands are not overridden. `/speckit-constitution` works as usual on the workspace constitution; `/speckit-checklist` and `/speckit-taskstoissues` still assume the `specs/<feature>/` layout and are not meant for a central workspace.
+
 ## Installation
 
 ```bash

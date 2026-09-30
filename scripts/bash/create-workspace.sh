@@ -17,31 +17,35 @@
 # afterwards.
 set -euo pipefail
 
-usage() { sed -n '2,17p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'; exit 2; }
+usage() { sed -n '2,17p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'; exit "${1:-2}"; }
 fail() { echo "create-workspace: $*" >&2; exit 1; }
 
 TOOLKIT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-[ $# -ge 1 ] || usage
-TARGET="$1"; shift
-INTEGRATION="claude"; SCRIPT="sh"; WITH_SF=0; UPDATE=0
+TARGET=""; INTEGRATION="claude"; SCRIPT="sh"; WITH_SF=0; UPDATE=0
 while [ $# -gt 0 ]; do
   case "$1" in
-    --integration) INTEGRATION="${2:?}"; shift 2 ;;
-    --script) SCRIPT="${2:?}"; shift 2 ;;
+    --integration) INTEGRATION="${2:?--integration needs a value}"; shift 2 ;;
+    --script) SCRIPT="${2:?--script needs a value}"; shift 2 ;;
     --with-sf-workspace) WITH_SF=1; shift ;;
     --update) UPDATE=1; shift ;;
-    -h|--help) usage ;;
-    *) fail "unknown option: $1" ;;
+    -h|--help) usage 0 ;;
+    -*) fail "unknown option: $1" ;;
+    *) [ -z "$TARGET" ] || fail "only one target directory is accepted (got '$TARGET' and '$1')"
+       TARGET="$1"; shift ;;
   esac
 done
+[ -n "$TARGET" ] || usage
 case "$SCRIPT" in sh|ps|py) ;; *) fail "--script must be sh, ps or py" ;; esac
 command -v specify >/dev/null 2>&1 || fail "specify CLI not found on PATH"
 
-# Refuse targets inside the toolkit before creating anything (checked again after resolution).
+# Every refusal that can be decided without touching the filesystem comes before mkdir.
 case "$TARGET" in /*) target_abs="$TARGET" ;; *) target_abs="$PWD/$TARGET" ;; esac
 case "${target_abs%/}" in
   "$TOOLKIT"|"$TOOLKIT"/*) fail "refusing to create a workspace inside the toolkit checkout ($TOOLKIT)" ;;
 esac
+if [ "$UPDATE" = 1 ] && [ ! -e "$TARGET/.specify" ]; then
+  fail "$TARGET is not a Spec Kit project yet; run without --update"
+fi
 created=0
 [ -d "$TARGET" ] || { mkdir -p "$TARGET"; created=1; }
 TARGET="$(cd "$TARGET" && pwd)"
@@ -52,9 +56,6 @@ case "$TARGET" in
 esac
 if [ -e "$TARGET/.specify" ] && [ "$UPDATE" = 0 ]; then
   fail "$TARGET is already a Spec Kit project; re-run with --update to refresh the toolkit components"
-fi
-if [ ! -e "$TARGET/.specify" ] && [ "$UPDATE" = 1 ]; then
-  fail "$TARGET is not a Spec Kit project yet; run without --update"
 fi
 
 EXTENSIONS=(technical-solution mulesoft salesforce)
@@ -81,6 +82,16 @@ else
   specify workflow add --dev "$TOOLKIT/workflows/technical-solution"
 fi
 
+# `specify extension add --dev` links every generated command to a cache under
+# .specify/extensions/<id>/.specify-dev/. A workspace is a shared repository, and Git checks
+# symlinks out as plain text files where they are unsupported (the Windows default), so turn
+# the links back into regular files. `specify init` writes regular files already.
+while IFS= read -r -d '' link; do
+  case "$(readlink "$link")" in
+    *.specify-dev/*) cp -L "$link" "$link.materialised" && mv -f "$link.materialised" "$link" ;;
+  esac
+done < <(find . -path ./.git -prune -o -type l -print0)
+
 # Verify every component is present; specify init returns 0 even when a component failed.
 missing=0
 [ -f .specify/presets/central-workspace/preset.yml ] || { echo "missing: preset central-workspace" >&2; missing=1; }
@@ -90,8 +101,9 @@ done
 [ -f .specify/workflows/technical-solution/workflow.yml ] || { echo "missing: workflow technical-solution" >&2; missing=1; }
 [ "$missing" = 0 ] || fail "workspace verification failed; see the messages above"
 
-# Seed the root .gitignore (machine-local registry, Python bytecode, local agent settings).
-for line in "spec-kit-workspace.local.json" "__pycache__/" "*.pyc" ".claude/settings.local.json"; do
+# Seed the root .gitignore (machine-local registry, Python bytecode, local agent settings,
+# the dev-install cache of the CLI).
+for line in "spec-kit-workspace.local.json" "__pycache__/" "*.pyc" ".claude/settings.local.json" ".specify-dev/"; do
   grep -qxF "$line" .gitignore 2>/dev/null || printf '%s\n' "$line" >> .gitignore
 done
 

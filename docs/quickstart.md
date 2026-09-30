@@ -30,7 +30,7 @@ specify init --here --force --non-interactive --ignore-agent-tools --integration
 specify workflow add --dev ../mulesoft-spec-kit/workflows/technical-solution
 ```
 
-plus a `.gitignore` seed and a check that every component is present (`specify init` returns 0 even when a component fails to install). The preset is not optional: without it the core commands write to `specs/` instead of `initiatives/`. Add `--extension ../mulesoft-spec-kit/extensions/sf-workspace` (script: `--with-sf-workspace`) only if you want the extended Salesforce add-on; its prompts contain deploy and login commands, gated to explicit requests. After a toolkit update, refresh an existing workspace with `create-workspace.sh my-workspace --update`. On Windows use the PowerShell twin `scripts\powershell\create-workspace.ps1` or Git Bash; keep `--script sh` unless your agent runs `python3` from PowerShell.
+plus a `.gitignore` seed and a check that every component is present (`specify init` returns 0 even when a component fails to install). The preset is not optional: without it the core commands write to `specs/` instead of `initiatives/`. Add `--extension ../mulesoft-spec-kit/extensions/sf-workspace` (script: `--with-sf-workspace`) only if you want the extended Salesforce add-on; its prompts contain deploy and login commands, gated to explicit requests. After a toolkit update, refresh an existing workspace with `create-workspace.sh my-workspace --update`. On Windows use the PowerShell twin `scripts\powershell\create-workspace.ps1` or Git Bash. Both default to `--script sh`; choose `ps` only if your agent runs `python3` from PowerShell.
 
 Use any integration Spec Kit supports in place of `claude`; the commands are generated from the same sources. Put the workspace under version control: it is where every initiative's artifacts will live.
 
@@ -42,7 +42,7 @@ Open your coding agent in `my-workspace` and run:
 /speckit-technical-solution-setup
 ```
 
-It creates `spec-kit-workspace.json` (workspace identity, artifact layout and resolver profiles), `spec-kit-workspace.local.json.template`, `initiatives/README.md` and `.specify/profiles/`, and replaces the default constitution with the workspace one if you have not customised it. Nothing existing is overwritten.
+It creates `spec-kit-workspace.json` (workspace identity, artifact layout and resolver profiles), `spec-kit-workspace.local.json.template`, `initiatives/README.md` and `.specify/profiles/`. Nothing you have written is overwritten; the workspace constitution is already in place, installed by `specify init` from the preset.
 
 ## 4. Register application repositories (only for code stages)
 
@@ -66,6 +66,7 @@ Details and examples: [source repositories](guides/source-workspaces.md).
 /speckit-technical-solution-run clarify ORD-042
 /speckit-technical-solution-run plan ORD-042
 /speckit-technical-solution-run tasks ORD-042 mulesoft
+/speckit-technical-solution-run analyze ORD-042 mulesoft mulesoft-catalog:experience/orders-xapi
 /speckit-technical-solution-run implement ORD-042 mulesoft mulesoft-catalog:experience/orders-xapi
 /speckit-technical-solution-run verify ORD-042 mulesoft
 /speckit-technical-solution-review ORD-042

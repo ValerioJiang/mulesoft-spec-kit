@@ -1,8 +1,8 @@
 # Salesforce CRM technical plan
 
 **Initiative**: `[EPIC-KEY]-[slug]`<br>
-**State**: `WIP — BLOCKED`<br>
-**Repository/branch analyzed**: [path, revision and dirty state]
+**Status**: `WIP — BLOCKED`<br>
+**Repository/branch analyzed**: [repository identity, branch, revision and dirty state]<br>
 **DX MCP**: [tool/capability/date or `NOT_EXECUTED`]
 
 ## Technical summary
@@ -41,6 +41,6 @@
 
 ## Blockers and open decisions
 
-| ID | Blocker/decision | Evidence required | Owner | Effect on state |
+| ID | Blocker/decision | Evidence required | Owner | Effect on status |
 |---|---|---|---|---|
 | `SF-OPEN-001` | [TBD] | [DX MCP capability] | [TBD] | `WIP — BLOCKED` |

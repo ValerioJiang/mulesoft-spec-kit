@@ -6,7 +6,7 @@ A central workspace is a Spec Kit project whose artifacts describe initiatives t
 
 | Layer | Location in the workspace | Responsibility |
 | --- | --- | --- |
-| Spec Kit core | `.specify/templates/`, `.specify/scripts/`, `.specify/memory/constitution.md` | Installed by `specify init`. The constitution comes from the `central-workspace` preset once `/speckit-technical-solution-setup` has run. |
+| Spec Kit core | `.specify/templates/`, `.specify/scripts/`, `.specify/memory/constitution.md` | Installed by `specify init`. The constitution is the workspace one, installed by `specify init` from the `central-workspace` preset. |
 | Preset | `.specify/presets/central-workspace/` | Core commands (`/speckit-specify`, `-plan`, `-tasks`, ...) and core templates redirected to `initiatives/<id>/<domain>/`. |
 | Orchestration | `.specify/extensions/technical-solution/` and the generated `/speckit-technical-solution-run` | Intake, single artifact path, routing per domain, stage gates and the completion report. |
 | Common | `.specify/extensions/technical-solution/templates/` and `initiatives/<id>/common/` | Shared requirements, integration IDs, decisions and cross-domain review. |

@@ -1,5 +1,5 @@
 ---
-description: Automated dependency checker and installer (sf, gh, sf-scanner).
+description: Check the required tools (sf, gh, code-analyzer); install only on explicit request.
 argument-hint: [tools]
 ---
 
