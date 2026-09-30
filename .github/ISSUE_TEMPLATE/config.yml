@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: The specify CLI itself
+    url: https://github.com/github/spec-kit/issues
+    about: Problems with `specify init`, extensions, presets, workflows or bundles as such belong to GitHub Spec Kit.
+  - name: The vendored SFSpeckit prompts
+    url: https://github.com/ysumanth06/spec-kit-sf/issues
+    about: The files under extensions/sf-workspace/prompts and sf-templates are vendored unchanged; report their content upstream.
