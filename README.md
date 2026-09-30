@@ -1,6 +1,6 @@
 <div align="center">
 
-# MuleSoft Spec Kit
+<img src="docs/images/mulesoft-spec-kit-lockup.png" alt="MuleSoft Spec Kit: spec-driven development for multi-repository Salesforce and MuleSoft solutions. specify, plan, build, verify, release." width="720">
 
 **Spec-Driven Development for multi-repository Salesforce and MuleSoft solutions, built on [GitHub Spec Kit](https://github.com/github/spec-kit).**
 
