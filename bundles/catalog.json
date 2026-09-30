@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "updated_at": "2026-09-29T00:00:00Z",
-  "catalog_url": "<https-url-of-this-file-when-served>",
+  "catalog_url": "https://raw.githubusercontent.com/ValerioJiang/spec-kit-workspace/main/bundles/catalog.json",
   "bundles": {
     "central-workspace": {
       "id": "central-workspace",
@@ -11,7 +11,7 @@
       "description": "Everything needed to run a central multi-repository Spec Kit workspace for Salesforce and MuleSoft initiatives.",
       "author": "Spec Kit Workspace",
       "license": "MIT",
-      "download_url": "<https-url-of-bundles/central-workspace/bundle.yml-when-served>",
+      "download_url": "https://raw.githubusercontent.com/ValerioJiang/spec-kit-workspace/main/bundles/central-workspace/bundle.yml",
       "requires": {
         "speckit_version": ">=1.0.0"
       },
@@ -21,8 +21,15 @@
         "steps": 0,
         "workflows": 1
       },
-      "tags": ["workspace", "multi-repo", "salesforce", "mulesoft", "solution-design"],
-      "verified": false
+      "tags": [
+        "workspace",
+        "multi-repo",
+        "salesforce",
+        "mulesoft",
+        "solution-design"
+      ],
+      "verified": false,
+      "repository": "https://github.com/ValerioJiang/spec-kit-workspace"
     }
   }
 }

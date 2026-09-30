@@ -14,7 +14,7 @@ Other installation methods are in the [Spec Kit installation guide](https://gith
 Clone this repository once (it is the source of the building blocks, not the workspace itself), then create a workspace next to it:
 
 ```bash
-git clone <this-repository> spec-kit-workspace
+git clone https://github.com/ValerioJiang/spec-kit-workspace.git spec-kit-workspace
 spec-kit-workspace/scripts/bash/create-workspace.sh my-workspace --integration claude
 ```
 

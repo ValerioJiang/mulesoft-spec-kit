@@ -6,6 +6,7 @@ extension:
   version: "2.0.0"
   description: "Salesforce design stages for a central Spec Kit workspace: specification, clarification, technical planning with a read-only DX MCP gate, and review, for any Salesforce DX repository."
   author: "Spec Kit Workspace"
+  repository: "https://github.com/ValerioJiang/spec-kit-workspace"
   license: "MIT"
 
 requires:

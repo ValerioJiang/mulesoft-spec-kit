@@ -13,3 +13,6 @@ __pycache__/
 .DS_Store
 .idea/
 .vscode/
+
+# Release assets built by scripts/python/build-release-assets.py
+/dist/

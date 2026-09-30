@@ -26,6 +26,7 @@ All notable changes to this repository are documented here. The format follows [
 - `speckit.technical-solution.setup`: creates the workspace files without overwriting anything.
 - `presets/central-workspace`: core `specify`, `clarify`, `plan`, `tasks`, `analyze`, `implement` and `converge` overrides plus `review`, `verify` and `release`, and the workspace-aware plan, tasks, checklist and constitution templates.
 - `bundles/central-workspace`, `extensions/catalog.json` and `scripts/bash/create-workspace.sh`.
+- Repository published at https://github.com/ValerioJiang/spec-kit-workspace; manifests carry the `repository` URL, the catalogs are served from `main` and point at the `v0.1.0` release assets built by `scripts/python/build-release-assets.py`.
 - MIT license.
 
 ## Earlier history

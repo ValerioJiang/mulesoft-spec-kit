@@ -26,7 +26,7 @@ Spec Kit Workspace turns Spec Kit into a *central workspace*: one repository tha
 2. Create a workspace from this checkout:
 
    ```bash
-   git clone <this-repository> spec-kit-workspace
+   git clone https://github.com/ValerioJiang/spec-kit-workspace.git spec-kit-workspace
    spec-kit-workspace/scripts/bash/create-workspace.sh ../my-workspace --integration claude
    ```
 
