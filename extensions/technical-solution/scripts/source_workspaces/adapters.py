@@ -76,9 +76,17 @@ def remote_identity(value: str) -> tuple[str, str]:
 
 
 def sanitized_remote(value: str | None) -> str | None:
+    """Return `host/path` for a network remote, or None when there is no portable identity.
+
+    A remote that is a filesystem path identifies nothing outside this machine, and reporting
+    it would leak a local path into the initiative artifacts.
+    """
     if not value:
         return None
-    host, path = remote_identity(value)
+    try:
+        host, path = remote_identity(value)
+    except ResolutionError:
+        return None
     return f"{host}/{path}"
 
 
@@ -119,7 +127,13 @@ def inspect_git_root(
 
     remote = run_git(repository_path, "remote", "get-url", "origin", required=False)
     if expected_remote:
-        if not remote or remote_identity(remote) != remote_identity(expected_remote):
+        try:
+            expected_identity = remote_identity(expected_remote)
+        except ResolutionError as error:
+            raise ResolutionError(
+                f"registered remote for {selection} is not a host-based URL (https://host/path or host:path)"
+            ) from error
+        if sanitized_remote(remote) != "/".join(expected_identity):
             raise ResolutionError(f"origin remote does not match the registered repository for {selection}")
 
     branch = run_git(repository_path, "branch", "--show-current") or "DETACHED"
