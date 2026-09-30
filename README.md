@@ -20,6 +20,89 @@ MuleSoft Spec Kit turns Spec Kit into a *central workspace*: one repository that
 | [`workflows/technical-solution`](workflows/technical-solution/) | A resumable pipeline that runs a stage or the whole cycle and stops at a review gate. |
 | [`bundles/central-workspace`](bundles/central-workspace/) | All of the above as one installable set. |
 
+## Lifecycle at a glance
+
+One orchestrator drives every initiative; each stage is also a command you can call on its own.
+
+```mermaid
+graph TD
+    RUN["/speckit-technical-solution-run  stage-or-full  initiative"]
+    subgraph Setup ["0. SETUP (once per workspace)"]
+        SU["/speckit-technical-solution-setup"]
+    end
+    subgraph Spec ["1. SPEC (define what)"]
+        S["/speckit-specify"] --> CL["/speckit-clarify"]
+    end
+    subgraph Plan ["2. PLAN (define how)"]
+        P["/speckit-plan"] --> T["/speckit-tasks"]
+        T --> AN["/speckit-analyze"]
+    end
+    subgraph Build ["3. BUILD (in the selected repository)"]
+        I["/speckit-implement"] --> CV["/speckit-converge"]
+    end
+    subgraph Verify ["4. VERIFY (evidence, not claims)"]
+        V["/speckit-verify"] --> RV["/speckit-review"]
+        RV --> TR["/speckit-technical-solution-review"]
+    end
+    subgraph Release ["5. RELEASE (explicit target only)"]
+        R["/speckit-release"]
+    end
+    SU --> Spec
+    Spec --> Plan --> Build --> Verify --> Release
+    RUN -. routes each stage .-> Spec
+    RUN -.-> Plan
+    RUN -.-> Build
+    RUN -.-> Verify
+    RUN -.-> Release
+```
+
+The MuleSoft stages, for any Mule 4 / Anypoint repository (artifacts under `initiatives/<id>/mulesoft/`):
+
+```mermaid
+graph TD
+    subgraph MSpec ["SPEC"]
+        MS["/speckit-mulesoft-specify"] --> MC["/speckit-mulesoft-clarify"]
+    end
+    subgraph MPlan ["PLAN"]
+        MP["/speckit-mulesoft-plan"] --> MR["/speckit-mulesoft-review"]
+        MR --> MT["/speckit-mulesoft-tasks"]
+        MT --> MA["/speckit-mulesoft-analyze"]
+    end
+    subgraph MBuild ["BUILD and VERIFY"]
+        MI["/speckit-mulesoft-implement"] --> MQ["/speckit-mulesoft-qa"]
+        MQ --> MV["/speckit-mulesoft-verify"]
+        MV --> MPR["/speckit-mulesoft-pr"]
+    end
+    subgraph MRelease ["RELEASE"]
+        MD["/speckit-mulesoft-deploy"] --> MU["/speckit-mulesoft-uat"]
+        MU --> MREL["/speckit-mulesoft-release"]
+    end
+    MSpec --> MPlan --> MBuild --> MRelease
+    MCH["/speckit-mulesoft-change"] -. re-baseline at any stage .-> MPlan
+```
+
+The Salesforce stages: design with the `salesforce` extension, then optionally the extended SFSpeckit stages of the `sf-workspace` add-on (artifacts under `initiatives/<id>/salesforce/`):
+
+```mermaid
+graph TD
+    subgraph SDesign ["DESIGN (salesforce extension)"]
+        SS["/speckit-salesforce-specify"] --> SC["/speckit-salesforce-clarify"]
+        SC --> SP["/speckit-salesforce-plan"]
+        SP --> SR["/speckit-salesforce-review"]
+    end
+    subgraph SExt ["EXTENDED (optional sf-workspace add-on)"]
+        ST["/speckit-sf-workspace-stories"] --> SA["/speckit-sf-workspace-analyze"]
+        SA --> SI["/speckit-sf-workspace-implement"]
+        SI --> SQ["/speckit-sf-workspace-qa"]
+        SQ --> SV["/speckit-sf-workspace-verify"]
+        SV --> SPR["/speckit-sf-workspace-pr"]
+        SPR --> SD["/speckit-sf-workspace-deploy"]
+        SD --> SU["/speckit-sf-workspace-uat"]
+    end
+    SDesign --> SExt
+    SX["score, regression, release-notes, hotfix, change, setup"] -.-> SExt
+```
+
 ## Get started
 
 1. Install the Spec Kit CLI: `uv tool install specify-cli --from git+https://github.com/github/spec-kit.git` (see the [Spec Kit installation guide](https://github.com/github/spec-kit/blob/main/docs/installation.md)).
@@ -36,6 +119,23 @@ MuleSoft Spec Kit turns Spec Kit into a *central workspace*: one repository that
 5. Start an initiative: `/speckit-technical-solution-run specify <initiative-id-or-source>`, then continue stage by stage (`clarify`, `plan`, `tasks`, `analyze`, `implement`, `verify`, `review`, `deploy`, `uat`, `release`) or ask for the `full` cycle.
 
 ## How it works
+
+```mermaid
+graph LR
+    subgraph WS ["Central workspace (one Git repository, holds every initiative)"]
+        M["spec-kit-workspace.json  identity, artifact layout, repository profiles"]
+        INIT["initiatives/ID/"]
+        INIT --> COM["common/  requirements, integration matrix, decisions, review"]
+        INIT --> SF["salesforce/  spec, plan, data model, tasks, evidence"]
+        INIT --> MU["mulesoft/  spec, plan, contracts, tasks, evidence"]
+    end
+    subgraph APPS ["Application repositories (selected per initiative, never an output location)"]
+        CRM["Salesforce DX repository"]
+        API["MuleSoft repositories (one root, or a catalog of nested repos)"]
+    end
+    M -- "resolver CLI: workspace ID to verified Git root, branch, commit" --> CRM
+    M --> API
+```
 
 - **One directory contract.** Every initiative lives under `initiatives/<id>/` with `common/` for shared requirements, decisions and the integration matrix, and one folder per impacted domain (`salesforce/`, `mulesoft/`, or another installed adapter). Application repositories are never used as an output location. See [lifecycle](extensions/technical-solution/docs/lifecycle.md).
 - **Stages with gates.** `specify → clarify → plan → tasks/stories → analyze → implement → verify/QA → review → deploy/UAT/release`. Each stage declares its artifacts and prerequisites, and states advance only on evidence: `Draft → Clarifying → Planned → Ready → Implementing → Implemented → Verified → Released`, with `Blocked` naming the missing prerequisite. See the [workflow contract](extensions/technical-solution/docs/workflow-contract.md).
