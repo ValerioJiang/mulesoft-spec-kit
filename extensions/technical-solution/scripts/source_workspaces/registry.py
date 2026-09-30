@@ -187,6 +187,6 @@ def resolve_explicit_root(path_value: str, domain: str, root: Path | None = None
     return inspect_git_root(
         selected_path,
         selection="explicit-root",
-        workspace_id="explicit-root",
+        source_workspace_id="explicit-root",
         domain=domain,
     )

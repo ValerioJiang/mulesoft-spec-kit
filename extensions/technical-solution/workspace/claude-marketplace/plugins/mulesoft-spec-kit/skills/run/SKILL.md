@@ -31,7 +31,7 @@ and artifact policy live in that workspace, not in this adapter.
    session rooted in the parent repository. The initiative registry and every initiative artifact
    belong under `<workspace>/initiatives/`.
 6. For source-code stages, use the workspace's resolver CLI and its machine-local
-   `spec-kit-workspace.local.json`. Relative source roots are resolved from `<workspace>`. Never
+   `spec-kit-workspace.local.json`. Relative source workspace roots are resolved from `<workspace>`. Never
    infer a repository by scanning folders or choose an ambiguous match.
 
 Do not reproduce or replace the canonical workflow in this adapter. If its required file or a

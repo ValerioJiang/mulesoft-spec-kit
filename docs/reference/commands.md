@@ -6,7 +6,7 @@ For a domain, use the command of its extension when there is one (`/speckit-mule
 
 ## Core commands (preset `central-workspace`)
 
-Installed from `presets/central-workspace/`. Required in every workspace. The first seven replace the Spec Kit core commands of the same name; `review`, `verify` and `release` are additions.
+Installed from `presets/central-workspace/`. Required in every workspace. The first nine replace the Spec Kit core commands of the same name; `review`, `verify` and `release` are additions.
 
 | Command | Description |
 | --- | --- |
@@ -14,14 +14,16 @@ Installed from `presets/central-workspace/`. Required in every workspace. The fi
 | `/speckit-clarify` | Find and record missing initiative decisions without inventing answers. |
 | `/speckit-plan` | Produce an implementation-ready technical plan under the selected central initiative domain. |
 | `/speckit-tasks` | Build a traceable task or story breakdown from an approved initiative plan. |
-| `/speckit-analyze` | Analyze selected scope and implementation tasks against source repositories and shared contracts. |
+| `/speckit-analyze` | Analyze selected scope and implementation tasks against application repositories and shared contracts. |
 | `/speckit-implement` | Implement explicitly selected tasks in the application repository for a central initiative. |
 | `/speckit-converge` | Find remaining implementation gaps and append traceable work without rewriting approved artifacts. |
+| `/speckit-checklist` | Generate a requirements-quality checklist for an initiative scope without judging the implementation. |
+| `/speckit-taskstoissues` | Create tracker issues from the tasks of an initiative domain, only on a direct request that names the tracker. |
 | `/speckit-review` | Review initiative artifacts or an application diff against approved scope and evidence. |
 | `/speckit-verify` | Verify completed implementation against initiative requirements and record exact evidence. |
 | `/speckit-release` | Prepare or execute an explicitly requested release stage using a named target and verified evidence. |
 
-Three commands of the Spec Kit core are installed as they are, because the preset does not override them. `/speckit-constitution` amends `.specify/memory/constitution.md` and is how the workspace constitution is changed. `/speckit-checklist` and `/speckit-taskstoissues` still expect the single-repository `specs/<feature>/` layout: they are not adapted to initiatives and are not meant to be used in a central workspace (tracker issues are created only on a direct request, through the process of the selected repository).
+One command of the Spec Kit core is installed as it is, because the preset does not override it: `/speckit-constitution` amends `.specify/memory/constitution.md` and is how the workspace constitution is changed.
 
 ## Extension `technical-solution`
 
@@ -44,7 +46,7 @@ Installed from `extensions/mulesoft/`. Artifacts go to the initiative root (`ini
 | `/speckit-mulesoft-plan` | Draft a MuleSoft technical plan for the selected initiative. |
 | `/speckit-mulesoft-review` | Review MuleSoft app scope, contract provenance and shared integration consistency. |
 | `/speckit-mulesoft-tasks` | Decompose the selected MuleSoft plan into traceable app, contract, test, and release tasks. |
-| `/speckit-mulesoft-analyze` | Check the selected MuleSoft scope, plan and tasks against the configured source repositories. |
+| `/speckit-mulesoft-analyze` | Check the selected MuleSoft scope, plan and tasks against the configured application repositories. |
 | `/speckit-mulesoft-implement` | Implement explicitly selected MuleSoft tasks in the configured application repository. |
 | `/speckit-mulesoft-qa` | Execute the MuleSoft verification cases selected in the approved initiative plan. |
 | `/speckit-mulesoft-verify` | Summarize MuleSoft implementation evidence against requirements and tasks. |

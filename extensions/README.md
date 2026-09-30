@@ -4,7 +4,7 @@ Each directory here is a self-contained [Spec Kit extension](https://github.com/
 
 | Extension | Purpose | Commands |
 |---|---|---|
-| [`technical-solution`](technical-solution/) | The central workspace itself: setup, initiative orchestration, cross-domain review, shared templates, the source-repository resolver and the workspace seed files. Required by every other extension here. | `/speckit-technical-solution-setup`, `-run`, `-review` |
+| [`technical-solution`](technical-solution/) | The central workspace itself: setup, initiative orchestration, cross-domain review, shared templates, the application-repository resolver and the workspace seed files. Required by every other extension here. | `/speckit-technical-solution-setup`, `-run`, `-review` |
 | [`mulesoft`](mulesoft/) | MuleSoft lifecycle stages for any Mule 4 / Anypoint repository: requirements, contracts, plan, tasks, implementation, QA, verification, change, PR, deploy, UAT, release. | 14 × `/speckit-mulesoft-<stage>` |
 | [`salesforce`](salesforce/) | Salesforce design stages for any Salesforce DX repository, with a read-only DX MCP gate. | 4 × `/speckit-salesforce-<stage>` |
 | [`sf-workspace`](sf-workspace/) | Opt-in add-on: the 14 extended [SFSpeckit](https://github.com/ysumanth06/spec-kit-sf) stages (stories through UAT; vendored, MIT) on top of the `salesforce` design stages, with an execution gate for the deploy, login and test commands they contain. | 14 × `/speckit-sf-workspace-<stage>` |

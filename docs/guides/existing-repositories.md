@@ -2,7 +2,7 @@
 
 ## Destination and layout
 
-The output of each initiative lives under `initiatives/<id>/common|salesforce|mulesoft|<domain>/`. Code stays in the source repositories chosen per initiative; the Spec Kit lifecycle does not require a parent directory, a known repository name or a `.specify/` inside the application repository.
+The output of each initiative lives under `initiatives/<id>/common|salesforce|mulesoft|<domain>/`. Code stays in the application repositories chosen per initiative; the Spec Kit lifecycle does not require a parent directory, a known repository name or a `.specify/` inside the application repository.
 
 The adapters are installed in the workspace by the `specify` CLI (`.specify/extensions/<id>/`) and do not depend on files installed in the application repositories.
 
@@ -16,4 +16,4 @@ The adapters are installed in the workspace by the `specify` CLI (`.specify/exte
 
 ## Cutover
 
-The cutover moves the complete lifecycle into the central workspace. The local configuration for target repositories is empty by default and includes no predefined paths; the operator selects a repository for each activity that requires code. A project's migration history must be documented in the initiative or in the profile it concerns, not in the commands: references to a previous context describe provenance and are not used at runtime.
+The cutover moves the complete lifecycle into the central workspace. The local registry of source workspaces is empty by default and includes no predefined paths; the operator selects a repository for each activity that requires code. A project's migration history must be documented in the initiative or in the profile it concerns, not in the commands: references to a previous context describe provenance and are not used at runtime.

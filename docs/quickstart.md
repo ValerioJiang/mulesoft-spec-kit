@@ -42,7 +42,7 @@ Open your coding agent in `my-workspace` and run:
 /speckit-technical-solution-setup
 ```
 
-It creates `spec-kit-workspace.json` (workspace identity, artifact layout and resolver profiles), `spec-kit-workspace.local.json.template`, `initiatives/README.md` and `.specify/profiles/`. Nothing you have written is overwritten; the workspace constitution is already in place, installed by `specify init` from the preset.
+It creates `spec-kit-workspace.json` (workspace identity, artifact layout and resolver profiles), `spec-kit-workspace.local.json.template`, `initiatives/README.md` and `.specify/profiles/`. Nothing you have written is overwritten; the workspace constitution is already in place, installed by `specify init` from the preset, and this step dates its ratification.
 
 ## 4. Register application repositories (only for code stages)
 
@@ -54,10 +54,10 @@ Design stages (`specify`, `clarify`, `plan`, `tasks`) need no repository. Before
 
    ```bash
    python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py list
-   python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py resolve <workspace-id>
+   python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py resolve <source-workspace-id>
    ```
 
-Details and examples: [source repositories](guides/source-workspaces.md).
+Details and examples: [source workspaces](guides/source-workspaces.md).
 
 ## 5. Run an initiative
 

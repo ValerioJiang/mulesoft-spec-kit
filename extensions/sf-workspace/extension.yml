@@ -3,7 +3,7 @@ schema_version: "1.0"
 extension:
   id: "sf-workspace"
   name: "SFSpeckit central-workspace add-on"
-  version: "2.1.1"
+  version: "2.1.2"
   description: "Extended Salesforce lifecycle stages (stories, implementation, QA, scoring, hotfix, regression, release notes, UAT) from SFSpeckit 2.0.0, adapted to a central Spec Kit workspace. Opt-in; design stages come from the salesforce extension."
   author: "MuleSoft Spec Kit (prompts by Sumanth Yanamala, MIT)"
   repository: "https://github.com/ValerioJiang/mulesoft-spec-kit"

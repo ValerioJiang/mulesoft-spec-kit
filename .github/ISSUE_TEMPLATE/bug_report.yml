@@ -1,0 +1,63 @@
+name: Bug report
+description: A command, script, template or document of the toolkit does the wrong thing.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please leave out organisation names, repository URLs, credentials and customer data: describe the shape of the problem, not your project.
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - extension technical-solution (setup, run, review, resolver)
+        - extension mulesoft
+        - extension salesforce
+        - extension sf-workspace
+        - preset central-workspace (core commands and templates)
+        - workflow or bundle
+        - create-workspace script (bash or PowerShell)
+        - catalogs or release assets
+        - documentation
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: The command or script you ran, what you expected and what you got. Paste the error text if there is one.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. scripts/bash/create-workspace.sh ../ws --integration claude
+        2. /speckit-technical-solution-run plan DEMO-1
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: toolkit-version
+    attributes:
+      label: Toolkit version
+      description: Release tag or commit of this repository, and how it was installed (script from a checkout, or catalogs).
+      placeholder: v0.2.0, installed with create-workspace.sh
+    validations:
+      required: true
+  - type: input
+    id: cli-version
+    attributes:
+      label: Spec Kit CLI version
+      description: Output of `specify --version`.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Coding agent, operating system and shell
+      placeholder: Claude Code, Windows 11, Git Bash
+    validations:
+      required: true

@@ -1,5 +1,5 @@
 ---
-description: Analyze selected scope and implementation tasks against source repositories and shared contracts.
+description: Analyze selected scope and implementation tasks against application repositories and shared contracts.
 argument-hint: <initiative-id> [domain]
 ---
 
@@ -15,4 +15,4 @@ Read `spec-kit-workspace.json` at the workspace root and `.specify/extensions/te
 
 ## Stage
 
-Compare specification, plan and tasks for conflicts, missing dependencies, contract mismatch and scope gaps. If repository evidence is needed, use the shared resolver CLI from `source_resolution.entrypoint` with an exact workspace selection or explicit root. Record only its verified Git root, branch, commit and dirty state; do not parse local config or source manifests in this command. Inspect only task-relevant files. Write findings to the selected initiative's `analyze.md`; don't modify application code or run tests in this analysis stage.
+Compare specification, plan and tasks for conflicts, missing dependencies, contract mismatch and scope gaps. If repository evidence is needed, use the shared resolver CLI from `source_resolution.entrypoint` with an exact source workspace selection or explicit root. Record only its verified Git root, branch, commit and dirty state; do not parse the local registry or catalog manifests in this command. Inspect only task-relevant files. Write findings to the selected initiative's `analyze.md`; don't modify application code or run tests in this analysis stage.

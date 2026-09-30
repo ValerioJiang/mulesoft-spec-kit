@@ -1,0 +1,43 @@
+name: Feature request
+description: A stage, domain, template or behaviour the toolkit should have.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The toolkit bakes in no organisation-specific rule: tracker, branch policy, environments and quality gates belong in a profile. Requests that keep it generic are the easiest to accept.
+  - type: textarea
+    id: problem
+    attributes:
+      label: The situation
+      description: What you were trying to do in a central workspace, and where the toolkit stopped helping.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you would like
+      description: The command, template, resolver adapter or document you have in mind, and what it would produce.
+    validations:
+      required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - extension technical-solution (setup, run, review, resolver)
+        - extension mulesoft
+        - extension salesforce
+        - extension sf-workspace
+        - preset central-workspace (core commands and templates)
+        - workflow or bundle
+        - a new domain extension
+        - scripts, catalogs or documentation
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What you do today instead
+    validations:
+      required: false

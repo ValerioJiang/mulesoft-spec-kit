@@ -2,7 +2,7 @@
 
 **Initiative**: `<id>`  
 **Domain**: `<domain>`  
-**Source repository / commit**: `<identity> / <sha>`  
+**Application repository / commit**: `<identity> / <sha>`  
 **State**: `Implementing`
 
 ## Completed tasks

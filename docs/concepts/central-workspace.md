@@ -2,6 +2,19 @@
 
 A central workspace is a Spec Kit project whose artifacts describe initiatives that span several application repositories. The workspace holds the specifications, plans, tasks, decisions and evidence; the application repositories are selected targets, never embedded dependencies and never output locations.
 
+## Vocabulary
+
+The documentation, the commands and the resolver use one name per thing:
+
+| Term | Meaning |
+| --- | --- |
+| Central workspace (or just *workspace*) | The Spec Kit project created from this toolkit. It holds every initiative and no application code. |
+| Initiative | The unit of work: one change that spans several repositories, typically an epic or a solution design. Lives under `initiatives/<id>/`. |
+| Domain | A part of an initiative with its own adapter and folder: `common`, `salesforce`, `mulesoft`, or another installed extension. |
+| Application repository | A Git repository that holds application code. Selected per initiative, never an output location. |
+| Source workspace | A registered root from which application repositories are resolved: one application repository, or a catalog of nested ones. Described by a profile in `spec-kit-workspace.json`; its path lives only in the ignored local file. |
+| Source workspace ID | The `id` of that profile. A *selection* passed to the resolver is `<source-workspace-id>` or `<source-workspace-id>:<relative-repository-path>`. |
+
 ## Layers of a created workspace
 
 | Layer | Location in the workspace | Responsibility |

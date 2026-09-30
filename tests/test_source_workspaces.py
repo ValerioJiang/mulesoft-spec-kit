@@ -1,4 +1,4 @@
-"""Tests for the source-repository resolver shipped by the technical-solution extension.
+"""Tests for the application-repository resolver shipped by the technical-solution extension.
 
 Run from the toolkit root: `python -m unittest discover -s tests`. Needs `git` on PATH; every
 repository used here is created in a temporary directory.
@@ -100,7 +100,7 @@ class ResolverTest(unittest.TestCase):
     def test_catalog_matches_https_manifest_entry_against_ssh_origin(self) -> None:
         result = resolve_source("mulesoft-catalog:experience/orders-xapi", self.workspace)
         self.assertEqual(result["remote_identity"], "git.example.com/org/orders-xapi")
-        self.assertEqual(result["workspace_id"], "mulesoft-catalog")
+        self.assertEqual(result["source_workspace_id"], "mulesoft-catalog")
 
     def test_catalog_rejects_wrong_remote_missing_checkout_and_traversal(self) -> None:
         with self.assertRaisesRegex(ResolutionError, "does not match the registered repository"):

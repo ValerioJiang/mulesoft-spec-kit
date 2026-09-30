@@ -6,8 +6,8 @@
     "technical-solution": {
       "name": "Technical Solution Workspace",
       "id": "technical-solution",
-      "version": "3.0.1",
-      "description": "Central multi-repository Spec Kit workspace: initiative orchestration, cross-domain review, shared templates and the source-repository resolver.",
+      "version": "3.1.0",
+      "description": "Central multi-repository Spec Kit workspace: initiative orchestration, cross-domain review, shared templates and the application-repository resolver.",
       "author": "MuleSoft Spec Kit",
       "license": "MIT",
       "category": "process",
@@ -25,13 +25,13 @@
         "multi-repo",
         "solution-design"
       ],
-      "download_url": "https://github.com/ValerioJiang/mulesoft-spec-kit/releases/download/v0.1.1/technical-solution-3.0.1.zip",
+      "download_url": "https://github.com/ValerioJiang/mulesoft-spec-kit/releases/download/v0.2.0/technical-solution-3.1.0.zip",
       "repository": "https://github.com/ValerioJiang/mulesoft-spec-kit"
     },
     "mulesoft": {
       "name": "MuleSoft Technical Solution",
       "id": "mulesoft",
-      "version": "2.0.1",
+      "version": "2.0.2",
       "description": "MuleSoft lifecycle stages for a central Spec Kit workspace: requirements, contracts, planning, tasks, implementation, verification, review and release for any Mule 4 repository.",
       "author": "MuleSoft Spec Kit",
       "license": "MIT",
@@ -49,13 +49,13 @@
         "api",
         "solution-design"
       ],
-      "download_url": "https://github.com/ValerioJiang/mulesoft-spec-kit/releases/download/v0.1.1/mulesoft-2.0.1.zip",
+      "download_url": "https://github.com/ValerioJiang/mulesoft-spec-kit/releases/download/v0.2.0/mulesoft-2.0.2.zip",
       "repository": "https://github.com/ValerioJiang/mulesoft-spec-kit"
     },
     "salesforce": {
       "name": "Salesforce Technical Solution",
       "id": "salesforce",
-      "version": "2.0.1",
+      "version": "2.0.2",
       "description": "Salesforce design stages for a central Spec Kit workspace: specification, clarification, technical planning with a read-only DX MCP gate, and review, for any Salesforce DX repository.",
       "author": "MuleSoft Spec Kit",
       "license": "MIT",
@@ -73,13 +73,13 @@
         "crm",
         "solution-design"
       ],
-      "download_url": "https://github.com/ValerioJiang/mulesoft-spec-kit/releases/download/v0.1.1/salesforce-2.0.1.zip",
+      "download_url": "https://github.com/ValerioJiang/mulesoft-spec-kit/releases/download/v0.2.0/salesforce-2.0.2.zip",
       "repository": "https://github.com/ValerioJiang/mulesoft-spec-kit"
     },
     "sf-workspace": {
       "name": "SFSpeckit central-workspace add-on",
       "id": "sf-workspace",
-      "version": "2.1.1",
+      "version": "2.1.2",
       "description": "Extended Salesforce lifecycle stages (stories, implementation, QA, scoring, hotfix, regression, release notes, UAT) from SFSpeckit 2.0.0, adapted to a central Spec Kit workspace. Opt-in; design stages come from the salesforce extension.",
       "author": "MuleSoft Spec Kit (prompts by Sumanth Yanamala, MIT)",
       "repository": "https://github.com/ValerioJiang/mulesoft-spec-kit",
@@ -111,7 +111,7 @@
         "apex",
         "workspace"
       ],
-      "download_url": "https://github.com/ValerioJiang/mulesoft-spec-kit/releases/download/v0.1.1/sf-workspace-2.1.1.zip"
+      "download_url": "https://github.com/ValerioJiang/mulesoft-spec-kit/releases/download/v0.2.0/sf-workspace-2.1.2.zip"
     }
   }
 }

@@ -4,6 +4,24 @@ All notable changes to this repository are documented here. The format follows [
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-09-30
+
+Components: `technical-solution` 3.1.0, `mulesoft` 2.0.2, `salesforce` 2.0.2, `sf-workspace` 2.1.2, preset `central-workspace` 1.1.0, bundle `central-workspace` 1.1.1, workflow `technical-solution` 2.1.0 (unchanged).
+
+### Added
+
+- `/speckit-checklist` and `/speckit-taskstoissues` are now provided by the preset instead of the Spec Kit core, whose versions expect the single-repository `specs/<feature>/` layout. The checklist is written to `<initiative>/<scope>/checklists/<focus>.md` from the workspace's own requirement IDs, and its template is adapted to initiatives. Issues are created only on a direct request that names the tracker, in a target resolved for the application repository, never in the central workspace's own remote; created issues are recorded in `tasks.md`. `/speckit-constitution` is the only core command left as it is.
+- A vocabulary in `docs/concepts/central-workspace.md` and, in short form, in the workflow contract.
+- Issue forms and a pull request template.
+
+### Changed
+
+- One name per thing. *Application repository* replaces "source repository", "source repo" and "target repository" everywhere; *source workspace* is kept for what it is, a registered root from which application repositories are resolved, and selections are written `<source-workspace-id>` and `<source-workspace-id>:<relative-repository-path>` instead of `<workspace-id>`. `check-consistency.py` rejects the retired terms.
+- **Resolver output:** the key `workspace_id` is now `source_workspace_id`. It held the source workspace ID and collided with the top-level `workspace_id` of `spec-kit-workspace.json`, which names the central workspace.
+- The workspace constitution template starts at version 1.0.0 with placeholders for its dates, and `/speckit-technical-solution-setup` fills them with the day the workspace adopts it. It used to ship the version and ratification date of the project this toolkit came from. Setup no longer treats any bracketed token as a sign of the Spec Kit default; the title is the test.
+- The Claude Code plugin's version follows the `technical-solution` extension that ships it (now 3.1.0, was an unrelated 0.2.0); `check-consistency.py` keeps the two equal.
+- The constitution says *orchestrator* where it said *router*, like every other document.
+
 ## [0.1.1] - 2026-09-30
 
 Components: `technical-solution` 3.0.1, `mulesoft` 2.0.1, `salesforce` 2.0.1, `sf-workspace` 2.1.1, preset `central-workspace` 1.0.1, bundle `central-workspace` 1.1.0, workflow `technical-solution` 2.1.0 (unchanged).
@@ -65,7 +83,8 @@ Components: `technical-solution` 3.0.1, `mulesoft` 2.0.1, `salesforce` 2.0.1, `s
 - Repository published at https://github.com/ValerioJiang/mulesoft-spec-kit; manifests carry the `repository` URL, the catalogs are served from `main` and point at the `v0.1.0` release assets built by `scripts/python/build-release-assets.py`.
 - MIT license.
 
-[Unreleased]: https://github.com/ValerioJiang/mulesoft-spec-kit/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/ValerioJiang/mulesoft-spec-kit/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/ValerioJiang/mulesoft-spec-kit/releases/tag/v0.2.0
 [0.1.1]: https://github.com/ValerioJiang/mulesoft-spec-kit/releases/tag/v0.1.1
 [0.1.0]: https://github.com/ValerioJiang/mulesoft-spec-kit/releases/tag/v0.1.0
 
