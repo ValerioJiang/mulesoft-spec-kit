@@ -27,7 +27,8 @@ Thanks for helping. This repository is a set of Spec Kit building blocks, so mos
 
 3. Read the generated file for the command you changed (for example `.claude/skills/speckit-mulesoft-plan/SKILL.md`). Every path in it must resolve inside the workspace: `.specify/extensions/<id>/...`, `initiatives/<id>/...`, `spec-kit-workspace.json`.
 4. Run the resolver: `python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py list` (`python` instead of `python3` on Windows; after copying `spec-kit-workspace.local.json.template` to `spec-kit-workspace.local.json`).
-5. If you changed a manifest, run `python -c "import yaml,sys; yaml.safe_load(open(sys.argv[1]))" <file>` on it.
+5. Run `python scripts/python/check-consistency.py` (needs PyYAML). It parses every manifest and catalog and fails when a description, version, command count or asset name differs between a manifest, a command file, a catalog and `docs/reference/commands.md`.
+6. If you changed the resolver, run `python -m unittest discover -s tests`.
 
 Run `specify` commands only inside the scratch workspace, never with the toolkit checkout as the working directory: the CLI writes a `.specify/` cache wherever it runs, and the toolkit must not contain one.
 
@@ -38,8 +39,8 @@ Run `specify` commands only inside the scratch workspace, never with the toolkit
 - **Templates provided by an extension** live at `templates/<name>.md` and are declared in `provides.templates`, so `specify preset resolve <name>` can find them and presets can override them.
 - **No organisation-specific content.** Tracker names, branch rules, environment names, remotes, hosts and quality gates belong in an optional profile, never in a command or template.
 - **English only** for prompts, templates and documentation. Evidence labels are `SOLUTION_DESIGN`, `REPOSITORY`, `LIVE_MCP`, `TEST_RESULT`, `DEPLOYMENT_RESULT`, `INFERENCE`, `OPEN_DECISION` and `NOT_EXECUTED`.
-- **Vendored files** under `extensions/sf-workspace/prompts/`, `templates/` and `docs/` come unchanged from [spec-kit-sf](https://github.com/ysumanth06/spec-kit-sf); adapt behaviour in `WORKSPACE-CONTRACT.md` and the wrapper commands instead of editing them.
-- **Versions.** Bump the `version` in the manifest you change and add a line to `CHANGELOG.md`.
+- **Vendored files** under `extensions/sf-workspace/prompts/`, `sf-templates/` and `docs/` come unchanged from [spec-kit-sf](https://github.com/ysumanth06/spec-kit-sf); adapt behaviour in `WORKSPACE-CONTRACT.md` and the wrapper commands instead of editing them.
+- **Versions.** Bump the `version` in the manifest you change, in its catalog entry (with the `download_url`) and in the bundle if it pins the component, and add a line to `CHANGELOG.md`.
 
 ## Submitting
 

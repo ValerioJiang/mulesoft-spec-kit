@@ -26,6 +26,7 @@ my-workspace/
     ├── speckit-technical-solution-setup/  speckit-technical-solution-run/  speckit-technical-solution-review/
     ├── speckit-specify/ speckit-clarify/ speckit-plan/ speckit-tasks/ speckit-analyze/ speckit-implement/
     ├── speckit-converge/ speckit-review/ speckit-verify/ speckit-release/
+    ├── speckit-constitution/ speckit-checklist/ speckit-taskstoissues/   (Spec Kit core, not adapted)
     ├── speckit-mulesoft-*/  (14)
     ├── speckit-salesforce-*/ (4)
     └── speckit-sf-workspace-*/ (14, only with --with-sf-workspace)

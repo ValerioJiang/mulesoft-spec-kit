@@ -1,5 +1,5 @@
 ---
-description: Generate Jira-ready developer stories with security matrices.
+description: Generate tracker-ready developer stories with security matrices.
 argument-hint: <initiative-id> [details]
 ---
 

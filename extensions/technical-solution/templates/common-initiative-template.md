@@ -1,8 +1,8 @@
 # Common intent and scope
 
 **Initiative**: `[EPIC-KEY]-[slug]`<br>
-**State**: `Draft`<br>
-**Primary source**: [Solution Design, revision/date]
+**Status**: `Draft`<br>
+**Primary source**: [Solution Design, revision/date]<br>
 **Scope confirmed by the user**: [yes/no, date]<br>
 **Output retention authorized**: [yes/no, classification/access verified, date]
 

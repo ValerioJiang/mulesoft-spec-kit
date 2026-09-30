@@ -1,8 +1,8 @@
 # MuleSoft technical plan
 
-**Initiative**: `[EPIC-KEY]-<slug>`<br>
-**State**: `WIP`<br>
-**Workspace/repository/revision**: [actual Git root, app and commit/branch]
+**Initiative**: `[EPIC-KEY]-[slug]`<br>
+**Status**: `WIP`<br>
+**Workspace/repository/revision**: [repository identity, app and commit/branch]<br>
 **Exchange/Anypoint/Runtime Manager evidence**: [tool/capability/date or `NOT_EXECUTED`]
 
 ## Summary and boundary
@@ -46,6 +46,6 @@ No coverage threshold is introduced without a verified policy. This section desc
 
 ## Blockers and open decisions
 
-| ID | Issue | Evidence needed | Owner | State |
+| ID | Issue | Evidence needed | Owner | Status |
 |---|---|---|---|---|
-| `MS-OPEN-001` | [TBD] | [repository/Exchange/Runtime Manager/owner] | [TBD] | `WIP` |
+| `MS-OPEN-001` | [TBD] | [repository/Exchange/Runtime Manager/owner] | [TBD] | `OPEN` |

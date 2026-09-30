@@ -6,7 +6,7 @@
 
 </div>
 
-MuleSoft Spec Kit turns Spec Kit into a *central workspace*: one repository that holds the specifications, plans, tasks and evidence of every initiative, while the application code stays in the repositories it belongs to. It ships as ordinary Spec Kit building blocks (extensions, a preset, a workflow and a bundle), so it installs with the `specify` CLI into any project that will serve as a central workspace, and it assumes nothing about your organisation, repositories, orgs or runtimes.
+MuleSoft Spec Kit turns Spec Kit into a *central workspace*: one repository that holds the specifications, plans, tasks and evidence of every initiative, while the application code stays in the repositories it belongs to. It ships as ordinary Spec Kit building blocks (extensions, a preset, a workflow and a bundle), so it installs with the `specify` CLI into any project that will serve as a central workspace, and it assumes nothing about your organisation, repositories, orgs or runtimes. An *initiative* is the unit of work: one change that spans several repositories, typically an epic or a solution design (Spec Kit's *feature* is the single-repository equivalent).
 
 ## What you get
 
@@ -18,7 +18,7 @@ MuleSoft Spec Kit turns Spec Kit into a *central workspace*: one repository that
 | [`extensions/sf-workspace`](extensions/sf-workspace/) | Opt-in add-on: the fourteen extended [SFSpeckit](https://github.com/ysumanth06/spec-kit-sf) stages (stories through UAT, vendored, MIT) adapted to the central workspace, on top of the `salesforce` design stages. |
 | [`presets/central-workspace`](presets/central-workspace/) | The core `speckit` commands and templates redirected to `initiatives/<id>/<domain>/`. |
 | [`workflows/technical-solution`](workflows/technical-solution/) | A resumable pipeline that runs a stage or the whole cycle and stops at a review gate. |
-| [`bundles/central-workspace`](bundles/central-workspace/) | All of the above as one installable set. |
+| [`bundles/central-workspace`](bundles/central-workspace/) | The default set (everything above except the opt-in `sf-workspace` add-on) as one installable unit. |
 
 ## Lifecycle at a glance
 
@@ -110,13 +110,13 @@ graph TD
 
    ```bash
    git clone https://github.com/ValerioJiang/mulesoft-spec-kit.git mulesoft-spec-kit
-   mulesoft-spec-kit/scripts/bash/create-workspace.sh ../my-workspace --integration claude
+   mulesoft-spec-kit/scripts/bash/create-workspace.sh my-workspace --integration claude
    ```
 
    The script runs `specify init` with the `central-workspace` preset and the `technical-solution`, `mulesoft` and `salesforce` extensions, installs the workflow, verifies every component and seeds `.gitignore`. Add `--with-sf-workspace` for the extended Salesforce add-on and `--update` to refresh an existing workspace after a toolkit update; a PowerShell twin is in `scripts/powershell/`. The equivalent manual commands are in the [quickstart](docs/quickstart.md).
 3. Open your coding agent in `my-workspace` and run `/speckit-technical-solution-setup`. It creates `spec-kit-workspace.json`, `initiatives/` and `.specify/profiles/` without overwriting anything.
 4. Register the application repositories you will work on in the ignored `spec-kit-workspace.local.json` ([guide](docs/guides/source-workspaces.md)). Design stages do not need any repository.
-5. Start an initiative: `/speckit-technical-solution-run specify <initiative-id-or-source>`, then continue stage by stage (`clarify`, `plan`, `tasks`, `analyze`, `implement`, `verify`, `review`, `deploy`, `uat`, `release`) or ask for the `full` cycle.
+5. Start an initiative: `/speckit-technical-solution-run specify <initiative-id-or-source>`, then continue stage by stage (`clarify`, `plan`, `tasks`, `analyze`, `implement`, `converge`, `verify`, `review`, `deploy`, `uat`, `release`) or ask for the `full` cycle.
 
 ## How it works
 
@@ -152,7 +152,8 @@ graph LR
 ├── presets/               # central-workspace preset (core command and template overrides)
 ├── workflows/             # technical-solution workflow
 ├── bundles/               # central-workspace bundle manifest
-├── scripts/bash/          # create-workspace.sh
+├── scripts/               # create-workspace (bash, PowerShell), release and consistency tooling
+├── tests/                 # resolver tests
 ├── docs/                  # quickstart, concepts, guides, reference
 ├── examples/              # what a created workspace looks like
 └── upstream/              # github/spec-kit and spec-kit-sf pinned as submodules (reference only)
@@ -178,6 +179,8 @@ Earlier versions of this repository were a pre-initialised workspace (root `.spe
 ## Acknowledgements
 
 MuleSoft Spec Kit is built on [GitHub Spec Kit](https://github.com/github/spec-kit) by GitHub (MIT): the `specify` CLI, the extension, preset, workflow and bundle system, the core templates and the Spec-Driven Development process that this toolkit adapts to a central multi-repository workspace. The Salesforce add-on vendors the prompts of [SFSpeckit (spec-kit-sf)](https://github.com/ysumanth06/spec-kit-sf) by Sumanth Yanamala (MIT). Both projects are pinned as submodules under `upstream/` for reference; thank you to their authors.
+
+MuleSoft Spec Kit is an independent open-source project. It is not affiliated with, endorsed by or sponsored by Salesforce, Inc. or GitHub, Inc.; MuleSoft, Anypoint Platform and Salesforce are trademarks of Salesforce, Inc. or its affiliates, used here only to say what the toolkit works with.
 
 ## Contributing and license
 

@@ -1,7 +1,7 @@
 ---
 name: run
 description: Run or resume a Spec Kit initiative through requirements, planning, implementation, testing, and deployment from a parent repository that mounts the central workspace as a submodule.
-argument-hint: <phase-or-full-cycle> <initiative-id-or-source> [domain] [repository-id-or-root]
+argument-hint: <stage-or-full-cycle> <initiative-id-or-source> [domain] [repository-id-or-root]
 user-invocable: true
 disable-model-invocation: false
 ---

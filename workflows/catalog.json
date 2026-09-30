@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-29T00:00:00Z",
+  "updated_at": "2026-09-30T00:00:00Z",
   "catalog_url": "https://raw.githubusercontent.com/ValerioJiang/mulesoft-spec-kit/main/workflows/catalog.json",
   "workflows": {
     "technical-solution": {
       "id": "technical-solution",
       "name": "Cross-platform Technical Solution",
-      "description": "Runs or resumes the complete cross-platform Spec Kit lifecycle in the central workspace, then pauses at a review gate",
+      "description": "Runs or resumes the complete cross-platform Spec Kit lifecycle in the central workspace.",
       "author": "MuleSoft Spec Kit",
       "version": "2.1.0",
       "url": "https://raw.githubusercontent.com/ValerioJiang/mulesoft-spec-kit/main/workflows/technical-solution/workflow.yml",

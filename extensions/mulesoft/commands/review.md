@@ -15,4 +15,4 @@ Read `.specify/extensions/technical-solution/docs/workflow-contract.md` and `.sp
 
 ## Stage
 
-Apply the MuleSoft domain adapter. Check app ownership, layer, contract source/version, compatibility, request/response, limits, auth, errors/retry/idempotency, observability, target runtime and required live evidence. Reconcile every shared integration ID and report remaining gaps without approving or publishing a contract.
+Apply the MuleSoft domain adapter. Check app ownership, layer, contract source/version, compatibility, request/response, limits, auth, errors/retry/idempotency, observability, target runtime and required live evidence. Reconcile every shared integration ID. Write the findings to central `mulesoft/review.md` and report remaining gaps without approving or publishing a contract.

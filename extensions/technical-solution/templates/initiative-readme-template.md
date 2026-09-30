@@ -3,7 +3,7 @@
 **ID**: `[EPIC-KEY]-[slug]`<br>
 **State**: `Draft`<br>
 **Solution Design**: [reference and revision/date, without duplicating the file unless it is unclassified]<br>
-**Impacted domains**: [common, Salesforce, MuleSoft, others]
+**Impacted domains**: [common, Salesforce, MuleSoft, others]<br>
 **Owner**: [TBD if not declared]
 
 ## Summary
@@ -14,7 +14,7 @@
 
 | System/app | Domain/layer | Repository | Evidence | Change confirmed? |
 |---|---|---|---|---|
-| [name] | [layer] | [relative path or TBD] | [source] | [yes/no/TBD] |
+| [name] | [layer] | [repository identity or TBD] | [source] | [yes/no/TBD] |
 
 ## Outputs and gates
 
@@ -22,7 +22,7 @@
 - [ ] `common/integration-matrix.md`
 - [ ] `common/decisions.md`
 - [ ] Plan for every domain actually impacted
-- Final state: `Draft` / `WIP` / `WIP — BLOCKED` / `Ready for review`
+- Initiative state: the `state` of `initiative.yml`, one of the workflow-contract states (`Draft` … `Released`, or `Blocked`)
 - Prerequisites or evidence not executed: [list]
 
 ## History

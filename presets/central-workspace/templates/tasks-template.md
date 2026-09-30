@@ -1,9 +1,9 @@
 ---
 
-description: "Task list template for feature implementation"
+description: "Task list template for an initiative domain"
 ---
 
-# Tasks: [FEATURE NAME]
+# Tasks: [INITIATIVE TITLE] ([domain])
 
 **Input**: Design documents from `initiatives/<initiative-id>/<domain>/`
 
@@ -11,12 +11,12 @@ description: "Task list template for feature implementation"
 
 **Verification**: Include implementation and verification work required by acceptance criteria and the approved plan. Planned checks must not be marked as executed results.
 
-**Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
+**Organization**: Tasks are grouped by requirement, or by user story when the domain specification has stories, so that each group can be implemented and verified independently. The sample phases below say "User Story"; read it as "requirement group" when the specification uses `REQ-` IDs.
 
 ## Format: `[ID] [P?] [Story] Description`
 
 - **[P]**: Can run in parallel (different files, no dependencies)
-- **[Story]**: Which user story this task belongs to (e.g., US1, US2, US3)
+- **[Story]**: The requirement, integration or user story the task traces to (e.g., REQ-001, INT-001, US1)
 - Include exact paths relative to the selected application repository, as established by the plan
 
 ## Path Conventions
@@ -80,7 +80,7 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Tests for User Story 1 (OPTIONAL - only if tests requested) ⚠️
 
-> **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
+> **NOTE: test code is written with the implementation and executed only in the verify/QA stage, never as a side effect of implement**
 
 - [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
 - [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
@@ -154,7 +154,7 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX Performance optimization across all stories
 - [ ] TXXX [P] Additional unit tests (if requested) in tests/unit/
 - [ ] TXXX Security hardening
-- [ ] TXXX Run quickstart.md validation
+- [ ] TXXX List the checks planned for the verify/QA stage
 
 ---
 
@@ -177,7 +177,7 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Within Each User Story
 
-- Tests (if included) MUST be written and FAIL before implementation
+- Test code (if included) is written with the implementation; it is executed in the verify/QA stage
 - Models before services
 - Services before endpoints
 - Core implementation before integration
@@ -215,15 +215,15 @@ Task: "Create [Entity2] model in src/models/[entity2].py"
 1. Complete Phase 1: Setup
 2. Complete Phase 2: Foundational (CRITICAL - blocks all stories)
 3. Complete Phase 3: User Story 1
-4. **STOP and VALIDATE**: Test User Story 1 independently
-5. Deploy/demo if ready
+4. **STOP and VALIDATE**: verify User Story 1 independently (verify/QA stage)
+5. Release only on a direct request with a named target
 
 ### Incremental Delivery
 
 1. Complete Setup + Foundational → Foundation ready
-2. Add User Story 1 → Test independently → Deploy/Demo (MVP!)
-3. Add User Story 2 → Test independently → Deploy/Demo
-4. Add User Story 3 → Test independently → Deploy/Demo
+2. Add User Story 1 → Verify independently (MVP!)
+3. Add User Story 2 → Verify independently
+4. Add User Story 3 → Verify independently
 5. Each story adds value without breaking previous stories
 
 ### Parallel Team Strategy
@@ -244,7 +244,7 @@ With multiple developers:
 - [P] tasks = different files, no dependencies
 - [Story] label maps task to specific user story for traceability
 - Each user story should be independently completable and testable
-- Verify tests fail before implementing
-- Commit after each task or logical group
+- Planned checks are not results: record them and run them in the verify/QA stage
+- Do not commit, push or open a PR/MR unless the user asks for it
 - Stop at any checkpoint to validate story independently
 - Avoid: vague tasks, same file conflicts, cross-story dependencies that break independence

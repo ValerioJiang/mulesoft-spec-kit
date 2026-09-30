@@ -3,7 +3,7 @@
 **Initiative / domain**: `<id> / <domain>`  
 **Repository / commit**: `<identity> / <sha>`  
 **Target and change set**: `<explicit target and scope>`  
-**State**: `Not released`
+**Status**: `Not released`
 
 ## Gates
 

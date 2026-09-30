@@ -1,8 +1,8 @@
 # MuleSoft contract draft: `[INT-ID]`
 
-**State**: `DRAFT — NOT PUBLISHED`<br>
+**Status**: `DRAFT — NOT PUBLISHED`<br>
 **Source/destination owner**: [TBD]<br>
-**Format/version**: [RAML/OAS/AsyncAPI and version by decision]
+**Format/version**: [RAML/OAS/AsyncAPI and version by decision]<br>
 **Source of truth**: [repository or verified Exchange asset]
 
 ## Operation/event

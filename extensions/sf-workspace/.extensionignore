@@ -1,2 +1,16 @@
 # Not installed into workspaces: upstream's changelog describes the standalone extension.
 CHANGELOG.md
+
+# Vendored for reference only. These five upstream stages have no command in this add-on (the
+# design stages belong to the salesforce extension, and the constitution stage would rewrite the
+# workspace constitution), so neither their prompts nor the templates only they use are installed.
+prompts/specify.md
+prompts/clarify.md
+prompts/plan.md
+prompts/review.md
+prompts/constitution.md
+sf-templates/spec-template.md
+sf-templates/clarify-template.md
+sf-templates/clarification-report-template.md
+sf-templates/plan-template.md
+sf-templates/constitution-template.md

@@ -4,9 +4,39 @@ All notable changes to this repository are documented here. The format follows [
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-09-30
+
+Components: `technical-solution` 3.0.1, `mulesoft` 2.0.1, `salesforce` 2.0.1, `sf-workspace` 2.1.1, preset `central-workspace` 1.0.1, bundle `central-workspace` 1.1.0, workflow `technical-solution` 2.1.0 (unchanged).
+
 ### Changed
 
-- Renamed to MuleSoft Spec Kit. The repository is now https://github.com/ValerioJiang/mulesoft-spec-kit (the previous name redirects), the Claude Code plugin is `mulesoft-spec-kit` (`/mulesoft-spec-kit:run`), and the README credits GitHub Spec Kit and SFSpeckit. Catalog registration commands documented with the `--install-allowed` policy the CLI requires.
+- Renamed to MuleSoft Spec Kit. The repository is now https://github.com/ValerioJiang/mulesoft-spec-kit (the previous name redirects), the Claude Code plugin is `mulesoft-spec-kit` (`/mulesoft-spec-kit:run`), and the README credits GitHub Spec Kit and SFSpeckit. Catalog registration commands documented with the `--install-allowed` policy the CLI requires. The archives attached to `v0.1.0` were already built from the renamed tree while the `v0.1.0` tag points at the commit before the rename; from this release on the tag is created on the commit the archives are built from.
+- The `central-workspace` bundle no longer installs `sf-workspace`. The add-on is opt-in on every path: `--with-sf-workspace` with the scripts, `specify extension add sf-workspace` from the catalog.
+- `sf-workspace` installs only the 14 vendored prompts that have a command and the 4 templates they use; the 5 design-stage and constitution prompts and their templates stay in the repository for reference (`.extensionignore`). The descriptions of `setup`, `stories` and `deploy` no longer promise an installer, a named tracker or a fixed environment chain, which the workspace contract forbids.
+- One description per command: the manifests now carry the text of the command files' frontmatter (the text the agent sees), and `docs/reference/commands.md` follows them.
+- The orchestrator accepts `converge` and the domain-specific stages (MuleSoft `qa`, `pr`, `change`) and says which command handles a stage a domain extension does not provide. The workflow contract states that a domain command takes precedence over the core command for that domain, and that `Ready` needs both tasks and analyze (the quickstart now runs analyze).
+- Initiative *state* and document *status* are separate vocabularies: the workflow contract defines the document statuses the templates use (`Draft`, `WIP`, `WIP — BLOCKED`, `Ready for review`, `Approved`), and templates label them `Status`.
+- The seed `spec-kit-workspace.json` carries `workspace_id: central-workspace` and `setup` replaces it with the workspace's own name.
+- `build-release-assets.py` writes to `dist/<tag>/`, honours `.extensionignore` and stops when the catalogs name an archive it did not build.
+
+### Fixed
+
+- `scripts/bash/create-workspace.sh` is executable in Git. Every CI run had failed on `Permission denied`, as did the README's own command on Linux and macOS.
+- `create-workspace --update` left the generated extension commands as symlinks into the CLI's dev cache (`specify extension add --dev` always links), which Git checks out as text files where symlinks are unsupported. Both scripts now turn them back into regular files and ignore `.specify-dev/`.
+- `create-workspace.sh`: `--help` as the first argument ran `mkdir -p --help`; `--update` on a missing directory created it before refusing; options are now accepted before the target. `create-workspace.ps1`: defaults to `-Script sh` like the bash script and the documentation (it defaulted to `ps`), and no longer creates the target before refusing it.
+- The resolver failed with "unsupported format" on a repository whose `origin` is a filesystem path, even with `--root`. Such a repository now resolves with `remote_identity: null`; a filesystem path registered as the expected remote is reported as such.
+- The smoke workflow's bare-path check could never fail (`! grep` under `bash -e`).
+- References to things that do not exist: the README inside `claude-marketplace/` (now shipped), the "domain constitution" in `/speckit-mulesoft-implement`, `templates/` as the vendored template folder in `AGENTS.md` and `CONTRIBUTING.md`. `/speckit-mulesoft-review` names its output file and `/speckit-mulesoft-pr` appends to it instead of replacing it.
+- Documentation that contradicted behaviour: the CLI does not check `requires.tools`; the workspace constitution is installed by `specify init`, not by `setup`; `setup` may replace an untouched default constitution.
+- The tasks template no longer tells the agent to write failing tests first, commit after each task, deploy a demo or validate a `quickstart.md`, all of which the commands forbid or the layout lacks. Header lines of five templates no longer run together.
+- A client programme name left in the README's upgrade note.
+
+### Added
+
+- `scripts/python/check-consistency.py`: fails when manifests, command files, catalogs, the bundle and the command reference disagree, when a command mention names no command, or when a bash script is not executable in Git. Run in CI.
+- `tests/`: unit tests of the resolver, run in CI.
+- CI installs the Spec Kit CLI at the revision pinned by `upstream/spec-kit`, runs with read-only permissions and checks that an updated workspace contains no symlinks.
+- The README defines *initiative* and states that the project is not affiliated with Salesforce or GitHub. The three Spec Kit core commands the preset does not override (`constitution`, `checklist`, `taskstoissues`) are documented.
 
 ## [0.1.0] - 2026-09-30
 
@@ -35,6 +65,8 @@ All notable changes to this repository are documented here. The format follows [
 - Repository published at https://github.com/ValerioJiang/mulesoft-spec-kit; manifests carry the `repository` URL, the catalogs are served from `main` and point at the `v0.1.0` release assets built by `scripts/python/build-release-assets.py`.
 - MIT license.
 
+[Unreleased]: https://github.com/ValerioJiang/mulesoft-spec-kit/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/ValerioJiang/mulesoft-spec-kit/releases/tag/v0.1.1
 [0.1.0]: https://github.com/ValerioJiang/mulesoft-spec-kit/releases/tag/v0.1.0
 
 ## Earlier history

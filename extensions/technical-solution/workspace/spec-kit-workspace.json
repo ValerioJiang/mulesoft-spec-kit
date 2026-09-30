@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "workspace_id": "mulesoft-spec-kit",
+  "workspace_id": "central-workspace",
   "role": "central-speckit-artifact-workspace",
   "workflow_entrypoint": "speckit.technical-solution.run",
   "workflow_contract": ".specify/workflows/technical-solution/workflow.yml",

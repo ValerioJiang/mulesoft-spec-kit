@@ -30,7 +30,7 @@ Do not install this extension together with the catalog `sf` extension in the sa
 
 ## Project-specific choices
 
-The user or selected repository supplies branch policy, issue tracker, Git host, org alias, environments, test catalog, analyzers and release gates. Never use upstream sample values such as `dev`, `qa`, `prod`, `main`, `gh`, or fixed Salesforce paths as actual settings. Do not install dependencies or plugins unless the requested stage includes setup and the user asks to install them. The manifest declares `sf` (required) and `gh` (optional) so the CLI can warn when they are missing; nothing installs them automatically.
+The user or selected repository supplies branch policy, issue tracker, Git host, org alias, environments, test catalog, analyzers and release gates. Never use upstream sample values such as `dev`, `qa`, `prod`, `main`, `gh`, or fixed Salesforce paths as actual settings. Do not install dependencies or plugins unless the requested stage includes setup and the user asks to install them. The manifest declares `sf` (required) and `gh` (optional) for information only: the CLI neither checks nor installs them.
 
 ## Evidence and actions
 

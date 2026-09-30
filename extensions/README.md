@@ -31,7 +31,7 @@ specify init my-workspace --integration claude --script sh \
   --extension /path/to/this-repo/extensions/salesforce
 ```
 
-`scripts/bash/create-workspace.sh` (or `scripts/powershell/create-workspace.ps1`) runs these steps, verifies the result and seeds `.gitignore`; `--with-sf-workspace` adds the add-on and `--update` refreshes an existing workspace. Once the four catalogs of this repository are served over HTTPS (see [bundles](../bundles/README.md)), `catalog.json` in this directory is the extension catalog and the bundle can be installed with `specify bundle install central-workspace`.
+`scripts/bash/create-workspace.sh` (or `scripts/powershell/create-workspace.ps1`) runs these steps, verifies the result and seeds `.gitignore`; `--with-sf-workspace` adds the add-on and `--update` refreshes an existing workspace. `catalog.json` in this directory is the extension catalog. Once the four catalogs of this repository are registered in a project (see [bundles](../bundles/README.md)), the default set installs with `specify bundle install central-workspace` and the add-on with `specify extension add sf-workspace`.
 
 ## Conventions shared by all extensions here
 

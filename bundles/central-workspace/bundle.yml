@@ -3,9 +3,9 @@ schema_version: "1.0"
 bundle:
   id: "central-workspace"
   name: "Central Technical Solution Workspace"
-  version: "1.0.0"
+  version: "1.1.0"
   role: "developer"
-  description: "Everything needed to run a central multi-repository Spec Kit workspace for Salesforce and MuleSoft initiatives: the workspace extension, the domain extensions, the central-workspace preset and the technical-solution workflow."
+  description: "Everything needed to run a central multi-repository Spec Kit workspace for Salesforce and MuleSoft initiatives: the workspace extension, the mulesoft and salesforce extensions, the central-workspace preset and the technical-solution workflow. The sf-workspace add-on is installed separately."
   author: "MuleSoft Spec Kit"
   license: "MIT"
 
@@ -17,16 +17,14 @@ requires:
 provides:
   extensions:
     - id: "technical-solution"
-      version: "3.0.0"
+      version: "3.0.1"
     - id: "mulesoft"
-      version: "2.0.0"
+      version: "2.0.1"
     - id: "salesforce"
-      version: "2.0.0"
-    - id: "sf-workspace"
-      version: "2.1.0"
+      version: "2.0.1"
   presets:
     - id: "central-workspace"
-      version: "1.0.0"
+      version: "1.0.1"
       priority: 10
       strategy: "replace"
   workflows:
