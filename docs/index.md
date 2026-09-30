@@ -14,7 +14,7 @@ MuleSoft Spec Kit packages a *central workspace* for Spec-Driven Development acr
 
 ## Guides
 
-- [Source repositories](guides/source-workspaces.md): register and resolve the application repositories an initiative works on.
+- [Source workspaces](guides/source-workspaces.md): register and resolve the application repositories an initiative works on.
 - [Organisation profiles](guides/organisation-profiles.md): express tracker, branch, quality-gate and release conventions without baking them into the toolkit.
 - [Claude Code plugin for a parent repository](guides/claude-code-plugin.md): expose the workspace from a monorepo or programme repository that mounts it as a submodule.
 

@@ -19,7 +19,7 @@ The extension works with any Mule 4 / Anypoint Platform repository layout. It as
 | `/speckit-mulesoft-plan` | Draft a MuleSoft technical plan for the selected initiative. |
 | `/speckit-mulesoft-review` | Review MuleSoft app scope, contract provenance and shared integration consistency. |
 | `/speckit-mulesoft-tasks` | Decompose the selected MuleSoft plan into traceable app, contract, test, and release tasks. |
-| `/speckit-mulesoft-analyze` | Check the selected MuleSoft scope, plan and tasks against the configured source repositories. |
+| `/speckit-mulesoft-analyze` | Check the selected MuleSoft scope, plan and tasks against the configured application repositories. |
 | `/speckit-mulesoft-implement` | Implement explicitly selected MuleSoft tasks in the configured application repository. |
 | `/speckit-mulesoft-qa` | Execute the MuleSoft verification cases selected in the approved initiative plan. |
 | `/speckit-mulesoft-verify` | Summarize MuleSoft implementation evidence against requirements and tasks. |

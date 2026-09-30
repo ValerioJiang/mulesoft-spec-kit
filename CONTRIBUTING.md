@@ -40,6 +40,7 @@ Run `specify` commands only inside the scratch workspace, never with the toolkit
 - **No organisation-specific content.** Tracker names, branch rules, environment names, remotes, hosts and quality gates belong in an optional profile, never in a command or template.
 - **English only** for prompts, templates and documentation. Evidence labels are `SOLUTION_DESIGN`, `REPOSITORY`, `LIVE_MCP`, `TEST_RESULT`, `DEPLOYMENT_RESULT`, `INFERENCE`, `OPEN_DECISION` and `NOT_EXECUTED`.
 - **Vendored files** under `extensions/sf-workspace/prompts/`, `sf-templates/` and `docs/` come unchanged from [spec-kit-sf](https://github.com/ysumanth06/spec-kit-sf); adapt behaviour in `WORKSPACE-CONTRACT.md` and the wrapper commands instead of editing them.
+- **One name per thing.** *Application repository* for a Git repository with application code, *source workspace* for a registered root the resolver resolves them from; the full vocabulary is in [docs/concepts/central-workspace.md](docs/concepts/central-workspace.md). `check-consistency.py` rejects the retired synonyms.
 - **Versions.** Bump the `version` in the manifest you change, in its catalog entry (with the `download_url`) and in the bundle if it pins the component, and add a line to `CHANGELOG.md`.
 
 ## Submitting

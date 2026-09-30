@@ -18,7 +18,7 @@ def build_parser() -> argparse.ArgumentParser:
     listing.add_argument("--domain", help="filter by exact domain ID")
 
     resolving = subparsers.add_parser("resolve", help="resolve one exact source selection")
-    resolving.add_argument("selection", nargs="?", help="workspace ID or workspace ID plus catalog path")
+    resolving.add_argument("selection", nargs="?", help="source workspace ID, or <source-workspace-id>:<relative-repository-path> for a catalog")
     resolving.add_argument("--root", help="explicit repository root; relative paths use the central workspace root")
     resolving.add_argument("--domain", help="required with --root")
     return parser

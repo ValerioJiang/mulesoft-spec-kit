@@ -133,7 +133,7 @@ graph LR
         CRM["Salesforce DX repository"]
         API["MuleSoft repositories (one root, or a catalog of nested repos)"]
     end
-    M -- "resolver CLI: workspace ID to verified Git root, branch, commit" --> CRM
+    M -- "resolver CLI: source workspace ID to verified Git root, branch, commit" --> CRM
     M --> API
 ```
 
@@ -165,7 +165,7 @@ The layout follows [github/spec-kit](https://github.com/github/spec-kit): nothin
 
 - [Quickstart](docs/quickstart.md)
 - [The central workspace](docs/concepts/central-workspace.md) and the [lifecycle](docs/concepts/lifecycle.md)
-- Guides: [source repositories](docs/guides/source-workspaces.md), [existing repositories](docs/guides/existing-repositories.md), [organisation profiles](docs/guides/organisation-profiles.md), [Claude Code plugin for a parent repository](docs/guides/claude-code-plugin.md)
+- Guides: [source workspaces](docs/guides/source-workspaces.md), [existing repositories](docs/guides/existing-repositories.md), [organisation profiles](docs/guides/organisation-profiles.md), [Claude Code plugin for a parent repository](docs/guides/claude-code-plugin.md)
 - Reference: [commands](docs/reference/commands.md), [workflow contract](docs/reference/workflow-contract.md)
 
 ## Upgrading from the previous layout

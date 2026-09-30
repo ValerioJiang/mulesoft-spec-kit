@@ -19,8 +19,18 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
-# Commands of the Spec Kit core that the preset leaves as they are.
-CORE_COMMANDS = {"/speckit-checklist", "/speckit-constitution", "/speckit-taskstoissues"}
+# The one command of the Spec Kit core that the preset leaves as it is.
+CORE_COMMANDS = {"/speckit-constitution"}
+# One name per thing (docs/concepts/central-workspace.md, Vocabulary): these are the retired ones.
+RETIRED_TERMS = {
+    "source repositor": "application repository",
+    "source-repository": "application-repository",
+    "<workspace-id>": "<source-workspace-id>",
+    "exact workspace id": "exact source workspace ID",
+    "exact workspace selection": "exact source workspace selection",
+}
+PLUGIN_MANIFEST = ("extensions/technical-solution/workspace/claude-marketplace/plugins/"
+                   "mulesoft-spec-kit/.claude-plugin/plugin.json")
 # Vendored upstream files keep upstream's command names.
 VENDORED = ("extensions/sf-workspace/prompts/", "extensions/sf-workspace/sf-templates/",
             "extensions/sf-workspace/docs/", "extensions/sf-workspace/CHANGELOG.md")
@@ -161,6 +171,14 @@ def main() -> int:
             # `/speckit-mulesoft-*` and `/speckit-salesforce-<stage>` name a family, not a command.
             if mention not in known and not any(command.startswith(mention + "-") for command in known):
                 problems.append(f"{name} mentions {mention}, which is not a command of this toolkit")
+        if name != "CHANGELOG.md":  # the changelog may name what was retired
+            lowered = text.lower()
+            for retired, current in RETIRED_TERMS.items():
+                if retired in lowered:
+                    problems.append(f"{name} uses the retired term '{retired}'; the term is '{current}'")
+
+    expect("Claude plugin version (follows the technical-solution extension that ships it)",
+           load_json(ROOT / PLUGIN_MANIFEST)["version"], extension_versions.get("technical-solution"))
 
     if problems:
         print(f"{len(problems)} inconsistencies:")

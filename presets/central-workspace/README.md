@@ -1,6 +1,6 @@
 # Central Workspace
 
-A preset that makes the core Spec Kit commands work in a central, multi-repository workspace — artifacts live under `initiatives/<id>/<domain>/` instead of `specs/NNN-feature/`, and application code stays in source repositories selected per initiative.
+A preset that makes the core Spec Kit commands work in a central, multi-repository workspace — artifacts live under `initiatives/<id>/<domain>/` instead of `specs/NNN-feature/`, and application code stays in application repositories selected per initiative.
 
 ## When to Use
 
@@ -15,17 +15,19 @@ Use it in a workspace created for the `technical-solution` extension from this r
 | `/speckit-plan` | `plan.md` | Produce an implementation-ready technical plan for the selected domain |
 | `/speckit-tasks` | `tasks.md` | Build a traceable task or story breakdown from the approved plan |
 | `/speckit-analyze` | `analyze.md` | Check spec, plan and tasks for conflicts, gaps and contract mismatch |
-| `/speckit-implement` | *(code)* + `implementation-log.md` | Implement explicitly selected tasks in the resolved source repository |
+| `/speckit-implement` | *(code)* + `implementation-log.md` | Implement explicitly selected tasks in the resolved application repository |
 | `/speckit-converge` | `tasks.md` | Append a convergence phase for remaining gaps without rewriting approved work |
+| `/speckit-checklist` | `checklists/<focus>.md` | Generate a requirements-quality checklist for the initiative scope; reviewer-owned markers |
+| `/speckit-taskstoissues` | tracker issues + `tasks.md` | Create issues from tasks, only on a direct request that names the tracker |
 | `/speckit-review` | review record | Review artifacts or an application diff against approved scope and evidence |
 | `/speckit-verify` | `verification/` | Run only the relevant checks and record exact evidence |
 | `/speckit-release` | `release.md` | Prepare a release record; deploy only on an explicit request with a named target |
 
 ## What It Replaces
 
-The preset replaces the core `speckit.specify`, `speckit.clarify`, `speckit.plan`, `speckit.tasks`, `speckit.analyze`, `speckit.implement` and `speckit.converge` commands with central-workspace versions, and adds `speckit.review`, `speckit.verify` and `speckit.release`. It also overrides the `plan-template`, `tasks-template`, `checklist-template` and `constitution-template` templates with workspace-aware ones; commands resolve them by name, so the override is picked up through the normal template stack.
+The preset replaces the core `speckit.specify`, `speckit.clarify`, `speckit.plan`, `speckit.tasks`, `speckit.analyze`, `speckit.implement`, `speckit.converge`, `speckit.checklist` and `speckit.taskstoissues` commands with central-workspace versions, and adds `speckit.review`, `speckit.verify` and `speckit.release`. It also overrides the `plan-template`, `tasks-template`, `checklist-template` and `constitution-template` templates with workspace-aware ones; commands resolve them by name, so the override is picked up through the normal template stack.
 
-The core `speckit.checklist`, `speckit.constitution` and `speckit.taskstoissues` commands are not overridden. `/speckit-constitution` works as usual on the workspace constitution; `/speckit-checklist` and `/speckit-taskstoissues` still assume the `specs/<feature>/` layout and are not meant for a central workspace.
+The core `speckit.constitution` command is the only one not overridden: `/speckit-constitution` works as usual on the workspace constitution.
 
 ## Installation
 

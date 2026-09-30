@@ -39,4 +39,4 @@ Then open the generated file for the command you touched and check every path re
 
 ## Content rules
 
-English only. No organisation names, remotes, hosts, tracker keys, environment names or quality thresholds in prompts or templates; those go into optional profiles. Evidence labels and lifecycle states are fixed vocabularies (see `extensions/technical-solution/docs/workflow-contract.md`). Never edit the vendored files under `extensions/sf-workspace/prompts/`, `sf-templates/` and `docs/`.
+English only. No organisation names, remotes, hosts, tracker keys, environment names or quality thresholds in prompts or templates; those go into optional profiles. Evidence labels and lifecycle states are fixed vocabularies (see `extensions/technical-solution/docs/workflow-contract.md`). So are the names of things: *application repository*, *source workspace*, *orchestrator* (see `docs/concepts/central-workspace.md`). Never edit the vendored files under `extensions/sf-workspace/prompts/`, `sf-templates/` and `docs/`.

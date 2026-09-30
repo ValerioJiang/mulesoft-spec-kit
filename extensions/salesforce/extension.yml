@@ -3,7 +3,7 @@ schema_version: "1.0"
 extension:
   id: "salesforce"
   name: "Salesforce Technical Solution"
-  version: "2.0.1"
+  version: "2.0.2"
   description: "Salesforce design stages for a central Spec Kit workspace: specification, clarification, technical planning with a read-only DX MCP gate, and review, for any Salesforce DX repository."
   author: "MuleSoft Spec Kit"
   repository: "https://github.com/ValerioJiang/mulesoft-spec-kit"

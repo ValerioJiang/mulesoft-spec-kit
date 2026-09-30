@@ -112,7 +112,7 @@ def inspect_git_root(
     repository_path: Path,
     *,
     selection: str,
-    workspace_id: str,
+    source_workspace_id: str,
     domain: str,
     expected_remote: str | None = None,
 ) -> dict[str, object]:
@@ -141,7 +141,7 @@ def inspect_git_root(
     porcelain = run_git(repository_path, "status", "--porcelain=v1", "--untracked-files=normal")
     return {
         "selection": selection,
-        "workspace_id": workspace_id,
+        "source_workspace_id": source_workspace_id,
         "domain": domain,
         "repository_path": str(expected_root),
         "git_root": str(actual_root),
@@ -180,14 +180,14 @@ def _resolve_git_root(
     selection: str,
 ) -> dict[str, object]:
     if selection != profile["id"]:
-        raise ResolutionError(f"single-repository workspace does not accept a repository suffix: {profile['id']}")
+        raise ResolutionError(f"single-repository source workspace does not accept a repository suffix: {profile['id']}")
     source_root = _configured_root(workspace_root, local_entry)
     if source_root is None:
         raise ResolutionError(f"local root is not configured for source workspace profile: {profile['id']}")
     return inspect_git_root(
         source_root,
         selection=selection,
-        workspace_id=profile["id"],
+        source_workspace_id=profile["id"],
         domain=profile["domain"],
         expected_remote=profile.get("expected_remote"),
     )
@@ -243,7 +243,7 @@ def _resolve_path_remote_manifest(
     return inspect_git_root(
         selected_path,
         selection=selection,
-        workspace_id=profile["id"],
+        source_workspace_id=profile["id"],
         domain=profile["domain"],
         expected_remote=matches[0]["remote"],
     )

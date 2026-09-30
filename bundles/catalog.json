@@ -6,7 +6,7 @@
     "central-workspace": {
       "id": "central-workspace",
       "name": "Central Technical Solution Workspace",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "role": "developer",
       "description": "Everything needed to run a central multi-repository Spec Kit workspace for Salesforce and MuleSoft initiatives: the workspace extension, the mulesoft and salesforce extensions, the central-workspace preset and the technical-solution workflow. The sf-workspace add-on is installed separately.",
       "author": "MuleSoft Spec Kit",

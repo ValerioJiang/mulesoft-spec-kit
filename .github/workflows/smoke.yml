@@ -39,6 +39,11 @@ jobs:
           test -f .claude/skills/speckit-salesforce-plan/SKILL.md
           test -f .claude/skills/speckit-sf-workspace-stories/SKILL.md
           test -f .claude/skills/speckit-review/SKILL.md
+          # Every core command but constitution comes from the preset, not from the Spec Kit core.
+          for command in specify clarify plan tasks analyze implement converge checklist taskstoissues; do
+            grep -q "source: preset:central-workspace" ".claude/skills/speckit-$command/SKILL.md"
+          done
+          grep -q "RATIFICATION_DATE" .specify/memory/constitution.md
           # Not `! grep ...`: under `bash -e` a negated command never fails the step.
           if grep -rnE "(^|[ \`\"'(])(templates|scripts|docs)/" .claude/skills --include=SKILL.md \
               | grep -vE "\.specify/(extensions|scripts|templates|memory)/|metadata|source:"; then

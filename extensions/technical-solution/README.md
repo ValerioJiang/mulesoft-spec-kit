@@ -6,7 +6,7 @@ The extension that makes a Spec Kit project a *central workspace*: one repositor
 
 | Command | Purpose |
 | --- | --- |
-| `/speckit-technical-solution-setup [--with-claude-plugin]` | Creates `spec-kit-workspace.json`, `spec-kit-workspace.local.json.template`, `initiatives/README.md` and `.specify/profiles/` if missing, installs the workspace constitution if the default one is untouched, and optionally copies the Claude Code plugin for parent repositories. Never overwrites. |
+| `/speckit-technical-solution-setup [--with-claude-plugin]` | Creates `spec-kit-workspace.json`, `spec-kit-workspace.local.json.template`, `initiatives/README.md` and `.specify/profiles/` if missing, installs the workspace constitution if the default one is untouched and dates its ratification, and optionally copies the Claude Code plugin for parent repositories. Never overwrites. |
 | `/speckit-technical-solution-run <stage|full> <initiative-id-or-source> [domain] [repository]` | Starts or resumes an initiative: creates the initiative folder, determines the impacted domains, routes each stage to the core commands or the domain extensions, enforces the gates and reports evidence and blockers. |
 | `/speckit-technical-solution-review <initiative-id>` | Reviews traceability, evidence and cross-domain consistency (shared integration IDs) of an initiative and writes `common/review.md`. |
 
@@ -14,7 +14,7 @@ The extension that makes a Spec Kit project a *central workspace*: one repositor
 
 - `docs/lifecycle.md` and `docs/workflow-contract.md`: the directory contract, stages, evidence labels and states every command follows. Installed at `.specify/extensions/technical-solution/docs/`.
 - `templates/`: common initiative, domain specification, integration matrix, decision log, clarification report, initiative README, implementation log, verification and release templates, plus `initiative.yml.template`. Declared in `provides.templates`, so `specify preset resolve <name>` finds them and presets can override them.
-- `scripts/source_workspaces/`: the resolver CLI (`cli.py list|resolve`) that turns a workspace ID or `<workspace-id>:<relative-repository-path>` into a verified Git root with remote identity, branch, commit and dirty state. Two adapters are registered: `git-root` (one repository per root) and `path-remote-manifest` (a catalog of nested repositories listed in a manifest file). New repository layouts are new adapters in `adapters.py`; commands never parse local configuration themselves.
+- `scripts/source_workspaces/`: the resolver CLI (`cli.py list|resolve`) that turns a workspace ID or `<source-workspace-id>:<relative-repository-path>` into a verified Git root with remote identity, branch, commit and dirty state. Two adapters are registered: `git-root` (one repository per root) and `path-remote-manifest` (a catalog of nested repositories listed in a manifest file). New repository layouts are new adapters in `adapters.py`; commands never parse local configuration themselves.
 - `workspace/`: the seed files that `setup` copies into a workspace (`spec-kit-workspace.json`, the local registry template, the initiatives README, the profile README and example, and the Claude Code marketplace plugin).
 
 ## Requirements

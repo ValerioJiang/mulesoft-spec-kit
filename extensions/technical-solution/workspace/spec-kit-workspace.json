@@ -38,8 +38,8 @@
     "path_base": "workspace_root_for_relative_paths",
     "absolute_roots_allowed": true,
     "selection": {
-      "single_repository": "<workspace-id>",
-      "catalog_repository": "<workspace-id>:<relative-repository-path>",
+      "single_repository": "<source-workspace-id>",
+      "catalog_repository": "<source-workspace-id>:<relative-repository-path>",
       "matching": "exact"
     },
     "resolvers": {
