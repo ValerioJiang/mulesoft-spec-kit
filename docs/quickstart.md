@@ -32,6 +32,24 @@ specify workflow add --dev ../mulesoft-spec-kit/workflows/technical-solution
 
 plus a `.gitignore` seed and a check that every component is present (`specify init` returns 0 even when a component fails to install). The preset is not optional: without it the core commands write to `specs/` instead of `initiatives/`. Add `--extension ../mulesoft-spec-kit/extensions/sf-workspace` (script: `--with-sf-workspace`) only if you want the extended Salesforce add-on; its prompts contain deploy and login commands, gated to explicit requests. After a toolkit update, refresh an existing workspace with `create-workspace.sh my-workspace --update`. On Windows use the PowerShell twin `scripts\powershell\create-workspace.ps1` or Git Bash. Both default to `--script sh`; choose `ps` only if your agent runs `python3` from PowerShell.
 
+### Without a checkout: install from the catalogs
+
+The four catalogs of this repository are published, so the CLI alone can build a workspace from the released versions:
+
+```bash
+mkdir my-workspace && cd my-workspace
+specify init --here --force --non-interactive --ignore-agent-tools --integration claude --script sh
+base=https://raw.githubusercontent.com/ValerioJiang/mulesoft-spec-kit/main
+specify extension catalog add "$base/extensions/catalog.json" --name mulesoft-spec-kit --install-allowed
+specify preset catalog add "$base/presets/catalog.json" --name mulesoft-spec-kit --install-allowed
+specify workflow catalog add "$base/workflows/catalog.json"
+specify bundle catalog add "$base/bundles/catalog.json" --policy install-allowed --id mulesoft-spec-kit
+specify bundle install central-workspace
+specify extension add sf-workspace        # only if you want the extended Salesforce add-on
+```
+
+On this path the preset arrives after `specify init`, so the constitution is still the Spec Kit default until step 3 replaces and dates it; step 3 also writes the `.gitignore` lines the script would have seeded.
+
 Use any integration Spec Kit supports in place of `claude`; the commands are generated from the same sources. Put the workspace under version control: it is where every initiative's artifacts will live.
 
 ## 3. Initialise the workspace files

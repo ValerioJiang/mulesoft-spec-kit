@@ -16,17 +16,17 @@ The marketplace is a catalog; the plugin is the installable unit; the skill is t
 
 ## Setup in the parent repository
 
-From the root of the parent repository, add and initialise the submodule (here called `mulesoft-spec-kit`; the name is free):
+From the root of the parent repository, add and initialise the submodule (here called `solution-workspace`; the name is free):
 
 ```bash
-git submodule add <workspace-url> mulesoft-spec-kit
-git submodule update --init --recursive mulesoft-spec-kit
+git submodule add <workspace-url> solution-workspace
+git submodule update --init --recursive solution-workspace
 ```
 
 Each developer registers the local marketplace and installs the plugin once at project scope:
 
 ```bash
-claude plugin marketplace add ./mulesoft-spec-kit/claude-marketplace
+claude plugin marketplace add ./solution-workspace/claude-marketplace
 claude plugin install mulesoft-spec-kit@mulesoft-spec-kit --scope project
 ```
 

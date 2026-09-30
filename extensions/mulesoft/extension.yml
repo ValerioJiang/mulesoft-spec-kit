@@ -3,7 +3,7 @@ schema_version: "1.0"
 extension:
   id: "mulesoft"
   name: "MuleSoft Technical Solution"
-  version: "2.0.2"
+  version: "2.0.3"
   description: "MuleSoft lifecycle stages for a central Spec Kit workspace: requirements, contracts, planning, tasks, implementation, verification, review and release for any Mule 4 repository."
   author: "MuleSoft Spec Kit"
   repository: "https://github.com/ValerioJiang/mulesoft-spec-kit"

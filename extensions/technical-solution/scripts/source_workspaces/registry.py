@@ -155,6 +155,7 @@ def load_registry(
 
     return workspace_root, manifest, profiles, local_roots
 
+
 def list_sources(root: Path | None = None, domain: str | None = None) -> list[dict[str, object]]:
     workspace_root, _, profiles, local_roots = load_registry(root)
     results: list[dict[str, object]] = []

@@ -2,7 +2,7 @@ schema_version: "1.0"
 workflow:
   id: "technical-solution"
   name: "Cross-platform Technical Solution"
-  version: "2.1.0"
+  version: "2.1.1"
   author: "MuleSoft Spec Kit"
   description: "Runs or resumes the complete cross-platform Spec Kit lifecycle in the central workspace."
 
@@ -17,6 +17,7 @@ inputs:
   stage:
     type: string
     required: false
+    default: "full"
     prompt: "Lifecycle stage (default: full design-to-verification cycle)"
   initiative_id:
     type: string

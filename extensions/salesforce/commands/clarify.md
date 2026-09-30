@@ -15,4 +15,4 @@ Read `.specify/extensions/technical-solution/docs/workflow-contract.md` and `.sp
 
 ## Stage
 
-Apply the Salesforce domain adapter. Record focused questions, their decision impact, owner and missing evidence in `initiatives/<id>/salesforce/clarification-report.md`, using `.specify/extensions/technical-solution/templates/clarification-report-template.md`. Do not invent answers or replace the Salesforce DX MCP gate with a static source.
+Apply the Salesforce domain adapter. Record focused questions, their decision impact, owner and missing evidence in `salesforce/clarification-report.md` under the initiative root, using `.specify/extensions/technical-solution/templates/clarification-report-template.md`. Do not invent answers or replace the Salesforce DX MCP gate with a static source.
