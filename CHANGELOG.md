@@ -111,4 +111,4 @@ Components: `technical-solution` 3.0.1, `mulesoft` 2.0.1, `salesforce` 2.0.1, `s
 
 ## Earlier history
 
-The lineage before this release (a client-specific central workspace mounted as a submodule of a programme repository) is preserved in the Git history.
+Before 0.1.0 this was a client-specific central workspace, mounted as a submodule of a programme repository. That lineage is not part of this repository: its history starts with the restructured, generic toolkit.
