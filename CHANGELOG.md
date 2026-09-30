@@ -2,7 +2,7 @@
 
 All notable changes to this repository are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Unreleased] - 2026-09-29
+## [0.1.0] - 2026-09-30
 
 ### Changed
 
@@ -28,6 +28,8 @@ All notable changes to this repository are documented here. The format follows [
 - `bundles/central-workspace`, `extensions/catalog.json` and `scripts/bash/create-workspace.sh`.
 - Repository published at https://github.com/ValerioJiang/spec-kit-workspace; manifests carry the `repository` URL, the catalogs are served from `main` and point at the `v0.1.0` release assets built by `scripts/python/build-release-assets.py`.
 - MIT license.
+
+[0.1.0]: https://github.com/ValerioJiang/spec-kit-workspace/releases/tag/v0.1.0
 
 ## Earlier history
 
