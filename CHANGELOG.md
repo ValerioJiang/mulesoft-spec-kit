@@ -4,6 +4,26 @@ All notable changes to this repository are documented here. The format follows [
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-09-30
+
+Components: `technical-solution` 3.1.1, `mulesoft` 2.0.3, `salesforce` 2.0.3, `sf-workspace` 2.1.2 (unchanged), preset `central-workspace` 1.1.1, bundle `central-workspace` 1.1.2, workflow `technical-solution` 2.1.1.
+
+### Changed
+
+- The plan template speaks MuleSoft and Salesforce: its technical context and source layout examples are a Mule 4 application and a Salesforce DX project instead of a generic web and mobile project, and the constitution gate comes before the research it gates.
+- `spec-kit-workspace.json`: `workflow_contract` now points at the workflow contract document that every command reads; the workflow definition it used to point at is `workflow_definition`.
+- Stage paragraphs name their files relative to the initiative root (`salesforce/plan.md`, `common/review.md`), which `artifact_layout` decides, instead of spelling out `initiatives/<id>/`.
+- The quickstart documents installing the released versions from the published catalogs, without a checkout.
+
+### Fixed
+
+- The workflow's `stage` input had no default although its prompt promised the full cycle; with no stage given, the first word of the request was read as the stage.
+- `/speckit-review` resolved an application repository even for a review of initiative artifacts, which needs none, and did not say where the review goes. It now writes `review.md` under the selected scope and appends to an existing one; `/speckit-technical-solution-review` appends too.
+- A core command called without a domain now has a stated scope (`common`).
+- `/speckit-technical-solution-setup` seeds `.specify-dev/` in `.gitignore`, like the bootstrap scripts.
+- The resolver reads Git's output as UTF-8 instead of the console code page.
+- The plugin guide no longer names the example workspace submodule after this toolkit.
+
 ## [0.2.0] - 2026-09-30
 
 Components: `technical-solution` 3.1.0, `mulesoft` 2.0.2, `salesforce` 2.0.2, `sf-workspace` 2.1.2, preset `central-workspace` 1.1.0, bundle `central-workspace` 1.1.1, workflow `technical-solution` 2.1.0 (unchanged).
@@ -83,7 +103,8 @@ Components: `technical-solution` 3.0.1, `mulesoft` 2.0.1, `salesforce` 2.0.1, `s
 - Repository published at https://github.com/ValerioJiang/mulesoft-spec-kit; manifests carry the `repository` URL, the catalogs are served from `main` and point at the `v0.1.0` release assets built by `scripts/python/build-release-assets.py`.
 - MIT license.
 
-[Unreleased]: https://github.com/ValerioJiang/mulesoft-spec-kit/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/ValerioJiang/mulesoft-spec-kit/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/ValerioJiang/mulesoft-spec-kit/releases/tag/v0.2.1
 [0.2.0]: https://github.com/ValerioJiang/mulesoft-spec-kit/releases/tag/v0.2.0
 [0.1.1]: https://github.com/ValerioJiang/mulesoft-spec-kit/releases/tag/v0.1.1
 [0.1.0]: https://github.com/ValerioJiang/mulesoft-spec-kit/releases/tag/v0.1.0

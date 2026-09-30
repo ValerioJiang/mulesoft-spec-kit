@@ -8,7 +8,7 @@
       "name": "Cross-platform Technical Solution",
       "description": "Runs or resumes the complete cross-platform Spec Kit lifecycle in the central workspace.",
       "author": "MuleSoft Spec Kit",
-      "version": "2.1.0",
+      "version": "2.1.1",
       "url": "https://raw.githubusercontent.com/ValerioJiang/mulesoft-spec-kit/main/workflows/technical-solution/workflow.yml",
       "tags": [
         "workspace",

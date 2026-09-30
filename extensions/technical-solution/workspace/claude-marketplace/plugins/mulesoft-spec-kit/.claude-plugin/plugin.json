@@ -1,6 +1,6 @@
 {
   "name": "mulesoft-spec-kit",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Parent-repository entrypoint for the end-to-end Spec Kit lifecycle of the central workspace.",
   "author": {
     "name": "MuleSoft Spec Kit"

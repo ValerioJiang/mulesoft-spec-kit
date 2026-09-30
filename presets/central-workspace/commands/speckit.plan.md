@@ -15,4 +15,4 @@ Read `spec-kit-workspace.json` at the workspace root and `.specify/extensions/te
 
 ## Stage
 
-Read the central specification, clarification report, decisions and domain adapter. Create/update `plan.md` in `initiatives/<id>/<domain>/` using the resolved `plan-template` (run `specify preset resolve plan-template`; this preset overrides it), with boundaries, architecture, data/API contracts, security, dependencies, rollout considerations and verification approach. Discover application layout only in a selected application repository. Mark unknowns and gates; don't turn suggestions into approved decisions.
+Read the central specification, clarification report, decisions and domain adapter. Create/update `plan.md` under the selected scope of the initiative using the resolved `plan-template` (run `specify preset resolve plan-template`; this preset overrides it), with boundaries, architecture, data/API contracts, security, dependencies, rollout considerations and verification approach. Discover application layout only in a selected application repository. Mark unknowns and gates; don't turn suggestions into approved decisions.

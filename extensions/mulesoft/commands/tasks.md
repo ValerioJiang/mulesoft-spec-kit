@@ -15,4 +15,4 @@ Read `.specify/extensions/technical-solution/docs/workflow-contract.md` and `.sp
 
 ## Stage
 
-Read the central workflow contract, initiative common artifacts and MuleSoft plan. Create or update `initiatives/<id>/mulesoft/tasks.md` using the resolved `tasks-template` (run `specify preset resolve tasks-template`). Map each task to a requirement or integration ID, selected application/repository, exact discovered relative path, dependency, and verification evidence. Include implementation and MUnit/contract-verification tasks required by the plan. Do not create tracker issues. Do not infer all candidate apps are in scope.
+Read the central workflow contract, initiative common artifacts and MuleSoft plan. Create or update central `mulesoft/tasks.md` using the resolved `tasks-template` (run `specify preset resolve tasks-template`). Map each task to a requirement or integration ID, selected application/repository, exact discovered relative path, dependency, and verification evidence. Include implementation and MUnit/contract-verification tasks required by the plan. Do not create tracker issues. Do not infer all candidate apps are in scope.

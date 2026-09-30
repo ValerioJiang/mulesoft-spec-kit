@@ -15,4 +15,4 @@ Read `.specify/extensions/technical-solution/docs/workflow-contract.md` and `.sp
 
 ## Stage
 
-Apply the Salesforce domain adapter. Read the common initiative and integration matrix first. Create/update only `initiatives/<id>/salesforce/spec.md` from the source Solution Design, using `.specify/extensions/technical-solution/templates/domain-spec-template.md`; preserve its intent and cite evidence. Do not create a branch or use an application repository's `.specify` paths.
+Apply the Salesforce domain adapter. Read the common initiative and integration matrix first. Create/update only `salesforce/spec.md` under the initiative root from the source Solution Design, using `.specify/extensions/technical-solution/templates/domain-spec-template.md`; preserve its intent and cite evidence. Do not create a branch or use an application repository's `.specify` paths.

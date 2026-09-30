@@ -18,33 +18,33 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]
+**Language/Version**: [e.g., Mule runtime and Java version from `mule-artifact.json` and `pom.xml`, Apex and LWC at the project's API version, or NEEDS CLARIFICATION]
 
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]
+**Primary Dependencies**: [e.g., connectors and API specifications, managed packages, or NEEDS CLARIFICATION]
 
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]
+**Storage**: [if applicable, e.g., Object Store, a database behind a System API, Salesforce objects, or N/A]
 
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]
+**Testing**: [e.g., MUnit, Apex tests, Jest for LWC, contract tests, or NEEDS CLARIFICATION]
 
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
+**Target Platform**: [e.g., CloudHub 2.0, Runtime Fabric, a Salesforce org type, or NEEDS CLARIFICATION]
 
-**Project Type**: [e.g., library/cli/web-service/mobile-app/compiler/desktop-app or NEEDS CLARIFICATION]
+**Project Type**: [e.g., Experience/Process/System API, integration application, Salesforce DX package, or NEEDS CLARIFICATION]
 
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]
+**Performance Goals**: [domain-specific, e.g., requests per second, batch volume, response time, or NEEDS CLARIFICATION]
 
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]
+**Constraints**: [domain-specific, e.g., payload size, rate and governor limits, timeouts, or NEEDS CLARIFICATION]
 
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
-
-## Research
-
-[Findings that resolve every NEEDS CLARIFICATION above: decision, rationale, alternatives considered, and the source (repository revision, live evidence, document) for each. Record them here; there is no separate research file.]
+**Scale/Scope**: [domain-specific, e.g., number of applications, integrations, objects or users, or NEEDS CLARIFICATION]
 
 ## Constitution Check
 
 *GATE: Must pass before research. Re-check after design.*
 
 [Gates determined based on constitution file]
+
+## Research
+
+[Findings that resolve every NEEDS CLARIFICATION above: decision, rationale, alternatives considered, and the source (repository revision, live evidence, document) for each. Record them here; there is no separate research file.]
 
 ## Project Structure
 
@@ -68,46 +68,28 @@ Shared artifacts stay in `initiatives/<initiative-id>/common/` (`initiative.md`,
 <!--
   ACTION REQUIRED: The application code layout is discovered in the repository
   resolved for this initiative (package directories, modules, tests), never
-  assumed. Replace the placeholder tree below with the concrete layout observed
-  there. Delete unused options and expand the chosen structure with real paths
-  (e.g., apps/admin, packages/something). The delivered plan must not include
-  Option labels.
+  assumed. Replace the examples below with the concrete layout observed there,
+  using real paths. Delete the examples that do not apply; the delivered plan
+  must not include the example labels.
 -->
 
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
-src/
-├── models/
-├── services/
-├── cli/
-└── lib/
+# [REMOVE IF UNUSED] Example: a Mule 4 application
+pom.xml
+mule-artifact.json
+src/main/mule/                  # flows and global configuration
+src/main/resources/             # properties, DataWeave modules, the API specification if kept here
+src/test/munit/                 # MUnit suites
+src/test/resources/             # test payloads
 
-tests/
-├── contract/
-├── integration/
-└── unit/
-
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+# [REMOVE IF UNUSED] Example: a Salesforce DX project (package directories come from sfdx-project.json)
+sfdx-project.json
+<package-directory>/main/default/
+├── classes/                    # Apex and its tests
+├── lwc/
+├── flows/
+├── objects/
+└── permissionsets/
 ```
 
 **Structure Decision**: [Document the selected structure and reference the real

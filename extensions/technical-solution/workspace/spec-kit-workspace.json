@@ -3,7 +3,8 @@
   "workspace_id": "central-workspace",
   "role": "central-speckit-artifact-workspace",
   "workflow_entrypoint": "speckit.technical-solution.run",
-  "workflow_contract": ".specify/workflows/technical-solution/workflow.yml",
+  "workflow_contract": ".specify/extensions/technical-solution/docs/workflow-contract.md",
+  "workflow_definition": ".specify/workflows/technical-solution/workflow.yml",
   "initiative_registry": "initiatives/README.md",
   "artifact_layout": {
     "root": "initiatives/{initiative_id}",

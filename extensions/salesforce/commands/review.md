@@ -15,4 +15,4 @@ Read `.specify/extensions/technical-solution/docs/workflow-contract.md` and `.sp
 
 ## Stage
 
-Apply the Salesforce domain adapter. Review requirement traceability, object/security model, DX MCP evidence and every applicable common integration ID. Write the findings to `initiatives/<id>/salesforce/review.md`. Report remaining gaps; do not mark approval or implementation complete.
+Apply the Salesforce domain adapter. Review requirement traceability, object/security model, DX MCP evidence and every applicable common integration ID. Write the findings to `salesforce/review.md` under the initiative root. Report remaining gaps; do not mark approval or implementation complete.

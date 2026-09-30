@@ -96,6 +96,8 @@ def run_git(repository_path: Path, *arguments: str, required: bool = True) -> st
             ["git", "-C", str(repository_path), *arguments],
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
             check=False,
         )
     except FileNotFoundError as error:

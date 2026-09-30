@@ -22,7 +22,7 @@ Canonical path: `initiatives/<id>/`. Every generated artifact stays in `common/`
 8. **Review/PR**: checks traceability and uses the review system found in the repository. Create PR/MR only on direct request.
 9. **Deploy/UAT/release**: requires an explicit target and direct authorisation. Separates dry-run, deploy, smoke/verification and business acceptance.
 
-When the extension of a domain provides a command for a stage (`/speckit-<domain>-<stage>`), that command and its templates are the procedure for that domain. The core command with the domain as its argument (`/speckit-<stage> <initiative-id> <domain>`) is the fallback for the stages a domain extension does not provide, and the only procedure for `common`.
+When the extension of a domain provides a command for a stage (`/speckit-<domain>-<stage>`), that command and its templates are the procedure for that domain. The core command with the domain as its argument (`/speckit-<stage> <initiative-id> <domain>`) is the fallback for the stages a domain extension does not provide, and the only procedure for `common`. A core command called without a domain works on `common`.
 
 External actions are not started by automatic hooks. Do not send communications, create tickets or publish contracts as a side effect of an internal stage.
 
