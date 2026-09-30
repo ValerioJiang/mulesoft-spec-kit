@@ -5,6 +5,9 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   create-workspace:
     runs-on: ubuntu-latest
@@ -13,20 +16,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install the Spec Kit CLI
-        run: |
-          python -m pip install --quiet uv
-          uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
-          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
-      - name: Validate manifests
+      - name: Manifests, command files, catalogs and the command reference agree
         run: |
           python -m pip install --quiet pyyaml
-          for f in extensions/*/extension.yml presets/*/preset.yml workflows/*/workflow.yml bundles/*/bundle.yml; do
-            python -c "import sys, yaml; yaml.safe_load(open(sys.argv[1]))" "$f" && echo "ok $f"
-          done
-          for f in extensions/catalog.json presets/catalog.json workflows/catalog.json bundles/catalog.json; do
-            python -c "import sys, json; json.load(open(sys.argv[1]))" "$f" && echo "ok $f"
-          done
+          python scripts/python/check-consistency.py
+      - name: Resolver tests
+        run: python -m unittest discover -s tests -v
+      - name: Install the Spec Kit CLI at the revision pinned by upstream/spec-kit
+        run: |
+          revision="$(git ls-tree HEAD upstream/spec-kit | awk '{print $3}')"
+          test -n "$revision"
+          python -m pip install --quiet uv
+          uv tool install specify-cli --from "git+https://github.com/github/spec-kit.git@$revision"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - name: Create a workspace with every component
         run: scripts/bash/create-workspace.sh "$RUNNER_TEMP/ws" --integration claude --script sh --with-sf-workspace
       - name: Check what the CLI generated
@@ -37,11 +39,27 @@ jobs:
           test -f .claude/skills/speckit-salesforce-plan/SKILL.md
           test -f .claude/skills/speckit-sf-workspace-stories/SKILL.md
           test -f .claude/skills/speckit-review/SKILL.md
-          ! grep -rnE "(^|[ \`\"'(])(templates|scripts|docs)/" .claude/skills --include=SKILL.md | grep -vE "\.specify/(extensions|scripts|templates|memory)/|metadata|source:"
+          # Not `! grep ...`: under `bash -e` a negated command never fails the step.
+          if grep -rnE "(^|[ \`\"'(])(templates|scripts|docs)/" .claude/skills --include=SKILL.md \
+              | grep -vE "\.specify/(extensions|scripts|templates|memory)/|metadata|source:"; then
+            echo "::error::a generated skill refers to a bare templates/, scripts/ or docs/ path"
+            exit 1
+          fi
+          # Vendored prompts without a command are not installed.
+          test -f .specify/extensions/sf-workspace/prompts/stories.md
+          test ! -e .specify/extensions/sf-workspace/prompts/constitution.md
           specify preset resolve spec-template | grep -q "core"
           specify preset resolve tasks-template | grep -q "central-workspace"
           cp .specify/extensions/technical-solution/workspace/spec-kit-workspace.json .
           cp .specify/extensions/technical-solution/workspace/spec-kit-workspace.local.json.template spec-kit-workspace.local.json
           python3 .specify/extensions/technical-solution/scripts/source_workspaces/cli.py list
-      - name: Update mode is idempotent
-        run: scripts/bash/create-workspace.sh "$RUNNER_TEMP/ws" --integration claude --script sh --with-sf-workspace --update
+          ls .claude/skills | wc -l > "$RUNNER_TEMP/skill-count"
+      - name: Update mode keeps the workspace shareable
+        run: |
+          scripts/bash/create-workspace.sh "$RUNNER_TEMP/ws" --integration claude --script sh --with-sf-workspace --update
+          # `specify extension add --dev` links the generated commands; the script must undo that.
+          links="$(find "$RUNNER_TEMP/ws" -type l)"
+          if [ -n "$links" ]; then
+            echo "::error::the updated workspace contains symlinks"; echo "$links"; exit 1
+          fi
+          test "$(ls "$RUNNER_TEMP/ws/.claude/skills" | wc -l)" -eq "$(cat "$RUNNER_TEMP/skill-count")"
